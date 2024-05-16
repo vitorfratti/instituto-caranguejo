@@ -2,14 +2,12 @@ section.register-types {
     position: relative;
     z-index: 5;
     background: #fff;
-    height: 100vh;
-    padding: 2rem 0;
+    padding: 5rem 0;
 
     .container {
         @include column;
         align-items: center;
         justify-content: center;
-        height: 100vh;
 
         .content {
             position: relative;
@@ -19,6 +17,7 @@ section.register-types {
                 align-items: center;
                 justify-content: center;
                 gap: 0.5rem;
+                text-align: center;
 
                 img {
                     margin-bottom: 1.25rem;
@@ -37,6 +36,7 @@ section.register-types {
 
             .types {
                 @include center-center;
+                flex-wrap: wrap;
                 gap: 2rem;
                 margin-top: 2.5rem;
 

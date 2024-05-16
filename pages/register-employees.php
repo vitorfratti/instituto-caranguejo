@@ -5,7 +5,7 @@
         <div class="content">
             <div class="title">
                 <img src="<?= base_url('assets/images/svg/logo.svg') ?>" alt="logo">
-                <h2>CADASTRO ADMINISTRAÇÃO</h2>
+                <h2>CADASTRO DE FUNCIONÁRIOS</h2>
                 <p>Preencha suas informações para fazer seu cadastro</p>
             </div>
             <form>
