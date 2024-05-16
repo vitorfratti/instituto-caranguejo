@@ -1,0 +1,318 @@
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@100;200;300;400;500;600;700;800;900&display=swap");
+html {
+  font-size: 74%;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 3.75rem;
+}
+@media (max-width: 550px) {
+  h1 {
+    font-size: 3.25rem;
+  }
+}
+
+h2 {
+  font-size: 3rem;
+}
+@media (max-width: 550px) {
+  h2 {
+    font-size: 2.75rem;
+  }
+}
+
+h3 {
+  font-size: 2.5rem;
+}
+
+h4 {
+  font-size: 1.9rem;
+}
+@media (max-width: 550px) {
+  h4 {
+    font-size: 1.75rem;
+  }
+}
+
+h5 {
+  font-size: 1.65rem;
+}
+
+h6 {
+  font-size: 1.45rem;
+}
+
+p, li {
+  font-size: 1.5rem;
+  list-style: none;
+}
+
+a {
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+strong {
+  font-weight: 700;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Encode Sans Expanded", sans-serif;
+}
+
+body, html {
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1210px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1.5rem;
+  position: relative;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 0;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #F39200;
+}
+
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-decoration,
+input[type=search]::-webkit-search-results-button,
+input[type=search]::-webkit-search-results-decoration {
+  display: none;
+}
+
+.none {
+  display: none !important;
+}
+
+.invalid-input {
+  border: 1px solid #ff0000 !important;
+}
+
+.invalid-check {
+  outline: 1px solid #ff0000 !important;
+  border-radius: 4px;
+}
+
+.invalid-text {
+  color: #ff0000;
+  font-size: 1.25rem;
+  margin-top: 0.25rem;
+}
+
+.input {
+  position: relative;
+  border: 1px solid #444444;
+  border-radius: 6px;
+  color: #000;
+  width: 35rem;
+  display: flex;
+  align-items: center;
+}
+.input img {
+  margin-left: 1rem;
+}
+.input input {
+  position: relative;
+  width: 100%;
+  font-size: 1.5rem;
+  border: none;
+  outline: none;
+  padding: 1rem;
+  border-radius: 6px;
+}
+.input button {
+  background: none;
+  border: none;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.input button img {
+  margin: 0;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.submit button {
+  width: 35rem;
+  padding: 1rem;
+  background: #F9A61A;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  border-radius: 6px;
+  border: none;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1450980392);
+  cursor: pointer;
+}
+
+section.register-types {
+  position: relative;
+  z-index: 5;
+  background: #fff;
+  height: 100vh;
+  padding: 2rem 0;
+}
+section.register-types .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+section.register-types .container .content {
+  position: relative;
+}
+section.register-types .container .content .title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+section.register-types .container .content .title img {
+  margin-bottom: 1.25rem;
+}
+section.register-types .container .content .title h2 {
+  color: #000;
+  font-weight: 700;
+}
+section.register-types .container .content .title p {
+  color: #444444;
+  font-weight: 400;
+}
+section.register-types .container .content .types {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+section.register-types .container .content .types a {
+  position: relative;
+  width: 24rem;
+  height: 18rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.0823529412);
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1450980392);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+section.register-types .container .content .types a img {
+  width: 5rem;
+}
+section.register-types .container .content .types a h4 {
+  color: #000;
+  font-weight: 700;
+}
+section.register-types .container .content .types a:hover {
+  border: 1px solid #F9A61A;
+}
+section.register-types .container .content .login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+}
+section.register-types .container .content .login p {
+  color: #444444;
+  font-weight: 400;
+}
+section.register-types .container .content .login p a {
+  color: #F9A61A;
+  text-decoration: none;
+}
+
+section.register-admin {
+  position: relative;
+  z-index: 5;
+  background: #fff;
+  height: 100vh;
+  padding: 2rem 0;
+}
+section.register-admin .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+section.register-admin .container .content {
+  position: relative;
+}
+section.register-admin .container .content .title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+section.register-admin .container .content .title img {
+  margin-bottom: 1.25rem;
+}
+section.register-admin .container .content .title h2 {
+  color: #000;
+  font-weight: 700;
+}
+section.register-admin .container .content .title p {
+  color: #444444;
+  font-weight: 400;
+}
+section.register-admin .container .content form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+section.register-admin .container .content .login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+}
+section.register-admin .container .content .login p {
+  color: #444444;
+  font-weight: 400;
+}
+section.register-admin .container .content .login p a {
+  color: #F9A61A;
+  text-decoration: none;
+}/*# sourceMappingURL=style.css.map */
