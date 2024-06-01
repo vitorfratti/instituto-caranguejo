@@ -8,43 +8,58 @@
                 <h2>CADASTRO DE FUNCIONÁRIOS</h2>
                 <p>Preencha suas informações para fazer seu cadastro</p>
             </div>
-            <form>
-                <div class="input">
-                    <img
-                    src="<?= base_url('assets/images/svg/profile.svg') ?>"
-                    alt="profile">
-                    <input type="text" placeholder="Nome completo">
-                </div>
-                <div class="input">
-                    <img
-                    src="<?= base_url('assets/images/svg/email.svg') ?>"
-                    alt="email">
-                    <input type="email" placeholder="Email">
-                </div>
-                <div class="input">
-                    <img
-                    src="<?= base_url('assets/images/svg/password.svg') ?>"
-                    alt="password">
-                    <input type="password" placeholder="Senha">
-                    <button type="button">
+            <form
+            id="register-employees"
+            action="../controllers/register-employees.php"
+            method="POST">
+                <span data-input="name">
+                    <div class="input">
                         <img
-                        src="<?= base_url('assets/images/svg/eye.svg') ?>"
-                        alt="eye">
-                    </button>
-                </div>
-                <div class="input">
-                    <img
-                    src="<?= base_url('assets/images/svg/password.svg') ?>"
-                    alt="password">
-                    <input type="password" placeholder="Confirmar senha">
-                    <button type="button">
+                        src="<?= base_url('assets/images/svg/profile.svg') ?>"
+                        alt="profile">
+                        <input type="text" name="name" placeholder="Nome completo">
+                    </div>
+                    <p class="invalid-text none">O nome deve ser preenchido.</p>
+                </span>
+                <span data-input="email">
+                    <div class="input">
                         <img
-                        src="<?= base_url('assets/images/svg/eye.svg') ?>"
-                        alt="eye">
-                    </button>
-                </div>
+                        src="<?= base_url('assets/images/svg/email.svg') ?>"
+                        alt="email">
+                        <input type="email" name="email" placeholder="Email">
+                    </div>
+                    <p class="invalid-text none">O email deve estar no formato correto.</p>
+                </span>
+                <span data-input="password">
+                    <div class="input">
+                        <img
+                        src="<?= base_url('assets/images/svg/password.svg') ?>"
+                        alt="password">
+                        <input type="password" name="password" placeholder="Senha">
+                        <button type="button">
+                            <img
+                            src="<?= base_url('assets/images/svg/eye.svg') ?>"
+                            alt="eye">
+                        </button>
+                    </div>
+                    <p class="invalid-text none">A senha deve conter no mínimo 8 caracteres.</p>
+                </span>
+                <span data-input="confirm-password">
+                    <div class="input">
+                        <img
+                        src="<?= base_url('assets/images/svg/password.svg') ?>"
+                        alt="password">
+                        <input type="password" placeholder="Confirmar senha">
+                        <button type="button">
+                            <img
+                            src="<?= base_url('assets/images/svg/eye.svg') ?>"
+                            alt="eye">
+                        </button>
+                    </div>
+                    <p class="invalid-text none">As senhas devem ser iguais.</p>
+                </span>
                 <div class="submit">
-                    <button type="submit">FAZER CADASTRO</button>
+                    <button type="button">FAZER CADASTRO</button>
                 </div>
             </form>
             <div class="login">

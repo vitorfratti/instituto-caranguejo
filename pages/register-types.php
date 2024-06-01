@@ -9,12 +9,6 @@
                 <p>Selecione o tipo de usuário da sua conta</p>
             </div>
             <div class="types">
-                <a href="<?= base_url('/cadastro/admin') ?>">
-                    <img
-                    src="<?= base_url('assets/images/svg/admin.svg') ?>"
-                    alt="admin">
-                    <h4>ADMINISTRADOR</h4>
-                </a>
                 <a href="<?= base_url('/cadastro/funcionario') ?>">
                     <img
                     src="<?= base_url('assets/images/svg/user.svg') ?>"

@@ -6,9 +6,6 @@ switch ($route) {
     case 'tipos-de-cadastro':
         $file = './pages/register-types.php';
         break;
-    case 'cadastro/admin':
-        $file = './pages/register-admin.php';
-        break;
     case 'cadastro/funcionario':
         $file = './pages/register-employees.php';
         break;
@@ -19,7 +16,7 @@ switch ($route) {
         $file = './pages/login.php';
         break;
     default:
-        echo "Rota não encontrada";
+        header("Location: " . base_url('/tipos-de-cadastro'));
         exit;
 }
 

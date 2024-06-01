@@ -8,16 +8,17 @@
                 <h2>CADASTRO DE ALUNOS</h2>
                 <p>Preencha suas informações para fazer seu cadastro</p>
             </div>
-            <form>
+            <form method="POST" action="../controllers/register.php">
+                <input type="hidden" name="form_type" value="create_student">
                 <div class="flex">
                     <div class="input">
                         <img
                         src="<?= base_url('assets/images/svg/profile.svg') ?>"
                         alt="profile">
-                        <input type="text" placeholder="Nome completo">
+                        <input type="text" name="name" placeholder="Nome completo">
                     </div>
                     <div class="input">
-                        <input type="text" placeholder="Número da matrícula">
+                        <input type="text" name="name" placeholder="Número da matrícula">
                     </div>
                     <div class="input">
                         <input type="text" placeholder="Curso">

@@ -321,6 +321,10 @@ section.auth .container .content form .submit {
   margin-top: 0.25rem;
 }
 section.auth .container .content form .submit button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
   width: 35rem;
   max-width: 100%;
   padding: 1rem;
@@ -332,6 +336,18 @@ section.auth .container .content form .submit button {
   border: none;
   box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1450980392);
   cursor: pointer;
+}
+section.auth .container .content form .submit button img {
+  width: 1.5rem;
+  animation: infinite loading 1s ease;
+}
+@keyframes loading {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 section.auth .container .content .login {
   display: flex;
