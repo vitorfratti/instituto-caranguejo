@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `name` varchar(100) DEFAULT NULL,
   `email` varchar(150) DEFAULT NULL,
   `phone` varchar(100) DEFAULT NULL,
-  `registration_number` int(100) DEFAULT NULL,
+  `registration_number` bigint(100) DEFAULT NULL,
   `course` varchar(100) DEFAULT NULL,
   `year` varchar(100) DEFAULT NULL,
   `institution` varchar(150) DEFAULT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(150) DEFAULT NULL,
   `role` bigint(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Copiando dados para a tabela instituto-caranguejo.users: ~0 rows (aproximadamente)
 

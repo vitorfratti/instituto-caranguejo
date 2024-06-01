@@ -299,6 +299,7 @@ section.auth .container .content form .input button {
   cursor: pointer;
 }
 section.auth .container .content form .input button img {
+  width: 2rem;
   margin: 0;
 }
 section.auth .container .content form .forgot {
