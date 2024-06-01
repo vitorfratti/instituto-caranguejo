@@ -20,10 +20,16 @@
                     src="<?= base_url('assets/images/svg/password.svg') ?>"
                     alt="password">
                     <input type="password" placeholder="Senha">
-                    <button type="button">
+                    <button type="button" class="hide-show">
                         <img
-                        src="<?= base_url('assets/images/svg/eye.svg') ?>"
-                        alt="eye">
+                        class="eye-hide"
+                        src="<?= base_url('assets/images/svg/eye-hide.svg') ?>"
+                        alt="eye-hide">
+                        <img
+                        class="eye-show"
+                        src="<?= base_url('assets/images/svg/eye-show.svg') ?>"
+                        alt="eye-show"
+                        style="display: none;">
                     </button>
                 </div>
                 <div class="forgot">

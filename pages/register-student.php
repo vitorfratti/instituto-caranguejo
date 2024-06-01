@@ -11,61 +11,99 @@
             <form method="POST" action="../controllers/register.php">
                 <input type="hidden" name="form_type" value="create_student">
                 <div class="flex">
-                    <div class="input">
-                        <img
-                        src="<?= base_url('assets/images/svg/profile.svg') ?>"
-                        alt="profile">
-                        <input type="text" name="name" placeholder="Nome completo">
-                    </div>
-                    <div class="input">
-                        <input type="text" name="name" placeholder="Número da matrícula">
-                    </div>
-                    <div class="input">
-                        <input type="text" placeholder="Curso">
-                    </div>
-                    <div class="input">
-                        <input type="text" placeholder="Série/Ano">
-                    </div>
-                    <div class="input">
-                        <input type="text" placeholder="Instituição">
-                    </div>
-                    <div class="input">
-                        <input type="number" placeholder="Horas a validar">
-                    </div>
-                    <div class="input">
-                        <img
-                        src="<?= base_url('assets/images/svg/email.svg') ?>"
-                        alt="email">
-                        <input type="email" placeholder="Email">
-                    </div>
-                    <div class="input">
-                        <img
-                        src="<?= base_url('assets/images/svg/phone.svg') ?>"
-                        alt="phone">
-                        <input type="number" placeholder="Telefone">
-                    </div>
-                    <div class="input">
-                        <img
-                        src="<?= base_url('assets/images/svg/password.svg') ?>"
-                        alt="password">
-                        <input type="password" placeholder="Senha">
-                        <button type="button">
+                    <span data-input="name">
+                        <div class="input">
                             <img
-                            src="<?= base_url('assets/images/svg/eye.svg') ?>"
-                            alt="eye">
-                        </button>
-                    </div>
-                    <div class="input">
-                        <img
-                        src="<?= base_url('assets/images/svg/password.svg') ?>"
-                        alt="password">
-                        <input type="password" placeholder="Confirmar senha">
-                        <button type="button">
+                            src="<?= base_url('assets/images/svg/profile.svg') ?>"
+                            alt="profile">
+                            <input type="text" name="name" placeholder="Nome completo">
+                        </div>
+                        <p class="invalid-text none">O nome deve ser preenchido.</p>
+                    </span>
+                    <span data-input="registration-number">
+                        <div class="input">
+                            <input type="text" name="registration-number" placeholder="Número da matrícula">
+                        </div>
+                        <p class="invalid-text none">Esse campo deve ser preenchido.</p>
+                    </span>
+                    <span data-input="course">
+                        <div class="input">
+                            <input type="text" name="course" placeholder="Curso">
+                        </div>
+                        <p class="invalid-text none">Esse campo deve ser preenchido.</p>
+                    </span>
+                    <span data-input="year">
+                        <div class="input">
+                            <input type="text" name="year" placeholder="Série/Ano">
+                        </div>
+                        <p class="invalid-text none">Esse campo deve ser preenchido.</p>
+                    </span>
+                    <span data-input="institution">
+                        <div class="input">
+                            <input type="text" name="institution" placeholder="Instituição">
+                        </div>
+                        <p class="invalid-text none">Esse campo deve ser preenchido.</p>
+                    </span>
+                    <span data-input="hours-to-be-validated">
+                        <div class="input">
+                            <input type="text" name="hours-to-be-validated" placeholder="Horas a validar">
+                        </div>
+                        <p class="invalid-text none">Esse campo deve ser preenchido.</p>
+                    </span>
+                    <span data-input="email">
+                        <div class="input">
                             <img
-                            src="<?= base_url('assets/images/svg/eye.svg') ?>"
-                            alt="eye">
-                        </button>
-                    </div>
+                            src="<?= base_url('assets/images/svg/email.svg') ?>"
+                            alt="email">
+                            <input type="email" name="email" placeholder="Email">
+                        </div>
+                    </span>
+                    <span data-input="phone">
+                        <div class="input">
+                            <img
+                            src="<?= base_url('assets/images/svg/phone.svg') ?>"
+                            alt="phone">
+                            <input type="number" name="phone" placeholder="Telefone">
+                        </div>
+                    </span>
+                    <span data-input="password">
+                        <div class="input">
+                            <img
+                            src="<?= base_url('assets/images/svg/password.svg') ?>"
+                            alt="password">
+                            <input type="password" name="password" placeholder="Senha">
+                            <button type="button" class="hide-show">
+                                <img
+                                class="eye-hide"
+                                src="<?= base_url('assets/images/svg/eye-hide.svg') ?>"
+                                alt="eye-hide">
+                                <img
+                                class="eye-show"
+                                src="<?= base_url('assets/images/svg/eye-show.svg') ?>"
+                                alt="eye-show"
+                                style="display: none;">
+                            </button>
+                        </div>
+                    </span>
+                    <span data-input="confirm-password">
+                        <div class="input">
+                            <img
+                            src="<?= base_url('assets/images/svg/password.svg') ?>"
+                            alt="password">
+                            <input type="password" name="confirm-password" placeholder="Confirmar senha">
+                            <button type="button" class="hide-show">
+                                <img
+                                class="eye-hide"
+                                src="<?= base_url('assets/images/svg/eye-hide.svg') ?>"
+                                alt="eye-hide">
+                                <img
+                                class="eye-show"
+                                src="<?= base_url('assets/images/svg/eye-show.svg') ?>"
+                                alt="eye-show"
+                                style="display: none;">
+                            </button>
+                        </div>
+                    </span>
                 </div>
                 <div class="submit">
                     <button type="submit">FAZER CADASTRO</button>
