@@ -8,7 +8,10 @@
                 <h2>CADASTRO DE ALUNOS</h2>
                 <p>Preencha suas informações para fazer seu cadastro</p>
             </div>
-            <form method="POST" action="../controllers/register.php">
+            <form
+            id="register-student"
+            method="POST"
+            action="../controllers/register-student.php">
                 <input type="hidden" name="form_type" value="create_student">
                 <div class="flex">
                     <span data-input="name">
@@ -22,7 +25,7 @@
                     </span>
                     <span data-input="registration-number">
                         <div class="input">
-                            <input type="text" name="registration-number" placeholder="Número da matrícula">
+                            <input type="number" name="registration-number" placeholder="Número da matrícula">
                         </div>
                         <p class="invalid-text none">Esse campo deve ser preenchido.</p>
                     </span>
@@ -57,14 +60,16 @@
                             alt="email">
                             <input type="email" name="email" placeholder="Email">
                         </div>
+                        <p class="invalid-text none">O email deve estar no formato correto.</p>
                     </span>
                     <span data-input="phone">
                         <div class="input">
                             <img
                             src="<?= base_url('assets/images/svg/phone.svg') ?>"
                             alt="phone">
-                            <input type="number" name="phone" placeholder="Telefone">
+                            <input type="text" name="phone" class="mask-cel" placeholder="Telefone Celular">
                         </div>
+                        <p class="invalid-text none">O telefone deve estar no formato correto.</p>
                     </span>
                     <span data-input="password">
                         <div class="input">
@@ -84,6 +89,7 @@
                                 style="display: none;">
                             </button>
                         </div>
+                        <p class="invalid-text none">A senha deve conter no mínimo 8 caracteres.</p>
                     </span>
                     <span data-input="confirm-password">
                         <div class="input">
@@ -103,10 +109,11 @@
                                 style="display: none;">
                             </button>
                         </div>
+                        <p class="invalid-text none">As senhas devem ser iguais.</p>
                     </span>
                 </div>
                 <div class="submit">
-                    <button type="submit">FAZER CADASTRO</button>
+                    <button type="button">FAZER CADASTRO</button>
                 </div>
             </form>
             <div class="login">
