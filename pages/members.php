@@ -71,7 +71,7 @@ unset($_SESSION['error']);
                     <p>Aqui ficam todos os usuários cadastrados na plataforma</p>
                 </span>
                 <span>
-                    <?php if (intval($role) == 1): ?>
+                    <?php if (intval($role) == 1 || intval($role) == 2): ?>
                         <button class="add-user">ADICIONAR USUÁRIO</button>
                     <?php endif; ?>
                 </span>

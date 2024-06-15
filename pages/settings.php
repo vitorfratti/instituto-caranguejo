@@ -9,7 +9,11 @@ if (!isset($_COOKIE['isAuth'])) {
 include_once __DIR__ . '/../controllers/users.php';
 
 $user_id = $_SESSION['user_id'];
-$user_info = get_user_info($user_id, ['name']);
+$user_info = get_user_info($user_id, ['name', 'email', 'role']);
+
+$name = $user_info['name'];
+$email = $user_info['email'];
+$role = $user_info['role'];
 
 ?>
 
@@ -23,6 +27,49 @@ $user_info = get_user_info($user_id, ['name']);
                     <h3>CONFIGURAÇÕES</h3>
                     <p>Atualize e gerencie suas informações aqui    </p>
                 </span>
+            </div>
+            <div class="infos">
+                <form action="">
+                    <span>
+                        <label>Nome:</label>
+                        <div class="input">
+                            <input type="text" value="<?= $name ?>">
+                        </div>
+                    </span>
+                    <span>
+                        <label>Email:</label>
+                        <div class="input">
+                            <input type="email" value="<?= $email ?>">
+                        </div>
+                    </span>
+                    <span>
+                        <label>Nova Senha:</label>
+                        <div class="input">
+                            <input type="password" value="">
+                            <button type="button" class="hide-show">
+                            <img
+                            class="eye-hide"
+                            src="<?= base_url('assets/images/svg/eye-hide.svg') ?>"
+                            alt="eye-hide">
+                            <img
+                            class="eye-show"
+                            src="<?= base_url('assets/images/svg/eye-show.svg') ?>"
+                            alt="eye-show"
+                            style="display: none;">
+                    </button>
+                        </div>
+                    </span>
+                    <span>
+                        <label>Usuário:</label>
+                        <div class="input">
+                            <input type="text" value="<?= intval($role) == 1 ? 'Admin' : (intval($role) == 2 ? 'Funcionário' : 'Aluno') ?>" readonly disabled>
+                        </div>
+                    </span>
+                    <div class="buttons">
+                        <button type="button" class="cancel">CANCELAR</button>
+                        <button type="submit" class="submit">SALVAR ALTERAÇÕES</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

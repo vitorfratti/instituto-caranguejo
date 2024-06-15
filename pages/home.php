@@ -24,6 +24,11 @@ $user_info = get_user_info($user_id, ['name']);
                     <p>Explore a plataforma e gerencie o instituto com facilidade e eficiência!</p>
                 </span>
             </div>
+            <div class="banner">
+                <img
+                src="<?= base_url('assets/images/instituto-banner.jpg') ?>"
+                alt="banner">
+            </div>
         </div>
     </div>
     <?php include __DIR__ . '/../partials/modal-register.php'; ?>
