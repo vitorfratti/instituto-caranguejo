@@ -1,0 +1,60 @@
+.sidebar {
+    position: relative;
+    z-index: 5;
+    background: $primary-color;
+    width: 20rem;
+    min-height: 100vh;
+    box-shadow: 0 0 1px #00000050;
+    @include column;
+    align-items: center;
+    justify-content: space-between;
+
+    span {
+        position: relative;
+        width: 100%;
+    }
+
+    .logo {
+        @include center-center;
+        padding: 2rem 0;
+    }
+
+    .links {
+        position: relative;
+        @include column;
+        align-items: center;
+        text-align: center;
+        margin-top: 2rem;
+        width: 100%;
+    }
+
+    .logout {
+        position: relative;
+        width: 100%;
+    }
+
+    a, button {
+        position: relative;
+        background: none;
+        border: none;
+        width: 100%;
+        color: #444444;
+        font-weight: 900;
+        padding: 1.25rem 0;
+        font-size: 1.4rem;
+        cursor: pointer;
+        transition: all .1s ease;
+
+        &.selected {
+            background: $main-color;
+            color: $primary-color;
+            box-shadow: 0 0 1px #00000050;
+        }
+
+        &:hover {
+            background: $main-color;
+            color: $primary-color;
+            box-shadow: 0 0 1px #00000050;
+        }
+    }
+}

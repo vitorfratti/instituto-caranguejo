@@ -56,3 +56,23 @@ input[type="search"]::-webkit-search-results-decoration {
     font-size: 1.25rem;
     margin-top: 0.25rem;
 }
+
+.error-message {
+    position: absolute;
+    z-index: 999999999999;
+    top: 1rem;
+    left: 1rem;
+    color: #ff0000;
+    border: 1px solid #ff0000;
+    font-size: 1.25rem;
+    font-weight: 500;
+    background: #ffeeee;
+    box-shadow: 0 0 30px #00000020;
+    padding: 0.75rem;
+    border-radius: 2px;
+}
+
+.not-found {
+    color: #444444;
+    font-weight: 400;
+}

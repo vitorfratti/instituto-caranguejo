@@ -3,5 +3,13 @@
 @import 'components/mixins';
 @import 'components/general';
 
+@import 'partials/sidebar';
+@import 'partials/topbar';
+@import 'partials/forms';
+@import 'partials/modal-register';
+
 @import 'pages/register-types';
 @import 'pages/auth';
+@import 'pages/home';
+@import 'pages/members';
+@import 'pages/settings';

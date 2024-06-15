@@ -15,10 +15,20 @@ switch ($route) {
     case 'login':
         $file = './pages/login.php';
         break;
+    case 'membros':
+        $file = './pages/members.php';
+        break;
+    case 'configuracoes':
+        $file = './pages/settings.php';
+        break;
+    case '':
+        $file = './pages/home.php';
+        break;
     default:
-        header("Location: " . base_url('/tipos-de-cadastro'));
+        header("Location: " . base_url('/'));
         exit;
 }
+
 
 include $file;
 

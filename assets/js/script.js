@@ -1,5 +1,45 @@
 $(document).ready(() => {
 
+	// Modal - Adicionar Usuário
+	$('.members .add-user').click(function() {
+		$('.overlay-modal-register').show()
+	})
+
+	$('.members .close-btn').click(function() {
+        $('.overlay-modal-register').hide()
+		$('.modal-register .types').show()
+		$('.modal-register .form-register').hide()
+    })
+
+	$('.overlay-modal-register').click(function(event) {
+		if (event.target === this) {
+			$(this).hide()
+			$('.modal-register .types').show()
+			$('.modal-register .form-register').hide()
+		}
+	})	
+
+	$('.modal-register .types button').click(function() {
+        $('.modal-register .types').hide()
+        $('.modal-register .form-register[data-role="' + $(this).data('role') + '"]').show()
+    })
+
+	// Toggle nas options do card do usuário
+	$('.options-btn').click(function(event) {
+        event.stopPropagation()
+        $('.options-card').not($(this).siblings('.options-card')).hide()
+        $(this).siblings('.options-card').toggle()
+    })
+
+    $(document).click(function(event) {
+        if (!$(event.target).closest('.options-btn, .options-card').length) {
+            $('.options-card').hide()
+        }
+    })
+
+	// Sidebar - Link selected
+	$('.sidebar .links a[data-page="' + $('section:first').data('page')  + '"]').addClass('selected')
+
 	// Mostrar senha
 	$('.hide-show').click(function() {
 		let input = $(this).closest('.input').find('input');

@@ -1,4 +1,11 @@
-<?php ?>
+<?php
+
+if (isset($_COOKIE['isAuth'])) {
+    header("Location: " . base_url('/'));
+    exit;
+}
+
+?>
 
 <section class="register-types">
     <div class="container">

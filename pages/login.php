@@ -1,6 +1,20 @@
-<?php ?>
+<?php
+
+session_start();
+if (isset($_COOKIE['isAuth'])) {
+    header("Location: " . base_url('/'));
+    exit;
+}
+
+$error = isset($_SESSION['error']) ? $_SESSION['error'] : '';
+unset($_SESSION['error']);
+
+?>
 
 <section class="auth">
+    <?php if ($error): ?>
+        <div class="error-message"><?= $error ?></div>
+    <?php endif; ?>
     <div class="container">
         <div class="content">
             <div class="title">
@@ -8,18 +22,22 @@
                 <h2>FAÇA SEU LOGIN</h2>
                 <p>Insira seus dados de acesso</p>
             </div>
-            <form>
+            <form
+            class="form"
+            id="login"
+            action="<?= base_url('/controllers/login.php') ?>"
+            method="POST">
                 <div class="input">
                     <img
                     src="<?= base_url('assets/images/svg/email.svg') ?>"
                     alt="email">
-                    <input type="email" placeholder="Email">
+                    <input type="email" name="email" placeholder="Email" required>
                 </div>
                 <div class="input">
                     <img
                     src="<?= base_url('assets/images/svg/password.svg') ?>"
                     alt="password">
-                    <input type="password" placeholder="Senha">
+                    <input type="password" name="password" placeholder="Senha" required>
                     <button type="button" class="hide-show">
                         <img
                         class="eye-hide"

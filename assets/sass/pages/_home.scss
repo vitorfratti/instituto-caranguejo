@@ -1,0 +1,37 @@
+section.home {
+    position: relative;
+    z-index: 5;
+    display: flex;
+
+    .main {
+        width: 100%;
+
+        .content {
+            @include column;
+            padding: 3rem;
+            width: 100%;
+            height: calc(100% - 5rem);
+
+            .header {
+                @include between-center;
+
+                span {
+                    &:first-child {
+                        @include column;
+                        gap: 0.5rem;
+
+                        h3 {
+                            color: #000;
+                            font-weight: 700;
+                        }
+        
+                        p {
+                            color: #444444;
+                            font-weight: 400;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
