@@ -19,6 +19,21 @@
 CREATE DATABASE IF NOT EXISTS `instituto-caranguejo` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
 USE `instituto-caranguejo`;
 
+-- Copiando estrutura para tabela instituto-caranguejo.projects
+CREATE TABLE IF NOT EXISTS `projects` (
+  `id` bigint(100) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `description` varchar(100) DEFAULT NULL,
+  `link` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Copiando dados para a tabela instituto-caranguejo.projects: ~2 rows (aproximadamente)
+INSERT INTO `projects` (`id`, `name`, `date`, `description`, `link`) VALUES
+	(37, 'Projeto Teste', '2024-06-16', 'Teste', 'Teste'),
+	(38, 'Projeto Teste 2', '2024-06-16', 'Teste', 'Teste');
+
 -- Copiando estrutura para tabela instituto-caranguejo.users
 CREATE TABLE IF NOT EXISTS `users` (
   `id` bigint(100) NOT NULL AUTO_INCREMENT,
@@ -32,10 +47,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `hours_to_be_validated` int(100) DEFAULT NULL,
   `password` varchar(150) DEFAULT NULL,
   `role` bigint(100) DEFAULT NULL,
+  `approved` int(100) DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Copiando dados para a tabela instituto-caranguejo.users: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela instituto-caranguejo.users: ~3 rows (aproximadamente)
+INSERT INTO `users` (`id`, `name`, `email`, `phone`, `registration_number`, `course`, `year`, `institution`, `hours_to_be_validated`, `password`, `role`, `approved`) VALUES
+	(21, 'Vitor Admin', 'vitor@admin.com', NULL, NULL, NULL, NULL, NULL, NULL, '$2y$10$pj2EoVbHd0KR.shprQZUluQlLYxxPnt5vkus3ddJd2ZYyZXaIO2Ge', 1, 1),
+	(48, 'Vitor Funcionário', 'vitor@funcionario.com', NULL, NULL, NULL, NULL, NULL, NULL, '$2y$10$KcBwqBm0aIEIbLgqKi/s7.hua3i83uijPpHvH6M5QF5K.pv3TEhna', 2, 0),
+	(49, 'Vitor', 'vitor@aluno.com', '(11) 1 1111-1111', 11111111111111, 'Engenharia de Software', '2', 'Católica SC', 100, '$2y$10$9LqvTxMZ9V6mu2rQmWgClujJslvOhonCpI/N66oIlwNEK7i4KDm0u', 3, 0);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

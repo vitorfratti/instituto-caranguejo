@@ -42,9 +42,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_project_id']))
             <div class="cards">
                 <?php if(count($projects) > 0): ?>
                     <?php foreach($projects as $project): ?>
+                        <?php
+                            $date = new DateTime($project['date']);
+                            $formatted_date = $date->format('d/m/Y');
+                        ?>
                         <div class="card" data-id="<?= $project['id'] ?>">
                             <div class="top">
-                                <p><?= $project['date'] ?></p>
+                                <p><?= $formatted_date ?></p>
                                 <button class="options-btn">
                                     <img src="<?= base_url('assets/images/svg/dots.svg') ?>" alt="dots">
                                 </button>
