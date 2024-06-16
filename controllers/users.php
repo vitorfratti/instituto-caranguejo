@@ -132,4 +132,34 @@ function approve_user($user_id) {
     return true;
 }
 
+function edit_user($user_id, $name, $email, $password) {
+    global $connect;
+
+    $query = "SELECT id FROM users WHERE email = ? AND id != ?";
+    $stmt = $connect->prepare($query);
+    $stmt->bind_param("si", $email, $user_id);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows > 0) {
+        $stmt->close();
+        $_SESSION['error'] = 'O email já está em uso por outro usuário.';
+        return false;
+    }
+    $stmt->close();
+
+    $query = "UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?";
+    $stmt = $connect->prepare($query);
+    if ($stmt === false) {
+        die('Prepare failed: ' . htmlspecialchars($connect->error));
+    }
+
+    $stmt->bind_param("sssi", $name, $email, $password, $user_id);
+    $stmt->execute();
+    $stmt->close();
+
+    $_SESSION['error'] = '';
+    return true;
+}
+
 ?>

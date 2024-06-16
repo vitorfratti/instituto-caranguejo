@@ -1,6 +1,39 @@
 $(document).ready(() => {
 
-	// Modal - Adicionar Usuário
+	// Verificação - Formulário de editar usuário 
+	function checkSettingsFields() {
+		let checked = 0
+		let total = $('.settings #edit-user .settings-field').length
+	
+		$('.settings #edit-user .settings-field').each(function() {
+			if($(this).val() === $(this).data('value')) {
+				checked++
+			}
+		})
+
+		if(checked == total) {
+			$('.settings #edit-user .submit').prop('disabled', true)
+			$('.settings #edit-user .submit').addClass('disabled')
+			$('.settings #edit-user .cancel').hide()
+		} else {
+			$('.settings #edit-user .submit').prop('disabled', false)
+			$('.settings #edit-user .submit').removeClass('disabled')
+			$('.settings #edit-user .cancel').show()
+		}
+	}
+
+	checkSettingsFields()
+
+	$('.settings #edit-user .settings-field').on('input', checkSettingsFields)
+
+	$('.settings form .cancel').click(function() {
+		$('.settings form input').each(function() {
+			$(this).val($(this).data('value'))
+		})
+		checkSettingsFields()
+	})
+
+	// Acões do Modal - Adicionar Usuário
 	$('.members .add-user').click(function() {
 		$('.overlay-modal-register').show()
 	})

@@ -627,7 +627,7 @@ section.home .main .content .banner {
   position: relative;
   margin-top: 2rem;
   width: 100%;
-  height: 30rem;
+  height: 36rem;
   border: 1px solid rgba(68, 68, 68, 0.1450980392);
   border-radius: 6px;
 }
@@ -640,6 +640,8 @@ section.home .main .content .banner img {
   border-radius: 6px;
   -o-object-fit: cover;
      object-fit: cover;
+  -o-object-position: 100% 75%;
+     object-position: 100% 75%;
 }
 
 section.members {
@@ -990,11 +992,11 @@ section.settings .main .content .buttons {
   gap: 1rem;
   margin-top: 2rem;
 }
+section.settings .main .content .buttons button {
+  transition: all 0.2s ease;
+}
 section.settings .main .content .buttons button.cancel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
+  display: none;
   max-width: 100%;
   padding: 1rem;
   background: #F4F4F4;
@@ -1005,18 +1007,6 @@ section.settings .main .content .buttons button.cancel {
   border: none;
   box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1450980392);
   cursor: pointer;
-}
-section.settings .main .content .buttons button.cancel img {
-  width: 1.5rem;
-  animation: infinite loading 1s ease;
-}
-@keyframes loading {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }
 section.settings .main .content .buttons button.submit {
   display: flex;
@@ -1045,4 +1035,8 @@ section.settings .main .content .buttons button.submit img {
   100% {
     transform: rotate(360deg);
   }
+}
+section.settings .main .content .buttons button.disabled {
+  opacity: 0.7;
+  cursor: default;
 }/*# sourceMappingURL=style.css.map */

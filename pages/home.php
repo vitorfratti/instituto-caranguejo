@@ -20,7 +20,7 @@ $user_info = get_user_info($user_id, ['name']);
         <div class="content">
             <div class="header">
                 <span>
-                    <h3>BEM-VINDO, <?= $user_info['name'] ?></h3>
+                    <h3>BEM-VINDO, <?= $user_info['name'] ?> 👋</h3>
                     <p>Explore a plataforma e gerencie o instituto com facilidade e eficiência!</p>
                 </span>
             </div>

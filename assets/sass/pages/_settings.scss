@@ -100,9 +100,10 @@ section.settings {
                 margin-top: 2rem;
             
                 button {
+                    transition: all .2s ease;
+
                     &.cancel {
-                        @include center-center;
-                        gap: 1rem;
+                        display: none;
                         max-width: 100%;
                         padding: 1rem;
                         background: #F4F4F4;
@@ -113,20 +114,6 @@ section.settings {
                         border: none;
                         box-shadow: 0 2px 1px #00000025;
                         cursor: pointer;
-            
-                        img {
-                            width: 1.5rem;
-                            animation: infinite loading 1s ease;
-                        }
-            
-                        @keyframes loading {
-                            0% {
-                                transform: rotate(0);
-                            }
-                            100% {
-                                transform: rotate(360deg);
-                            }
-                        }
                     }
 
                     &.submit {
@@ -156,6 +143,11 @@ section.settings {
                                 transform: rotate(360deg);
                             }
                         }
+                    }
+
+                    &.disabled {
+                        opacity: 0.7;
+                        cursor: default;
                     }
                 }
             }
