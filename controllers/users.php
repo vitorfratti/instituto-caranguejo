@@ -30,7 +30,7 @@ function get_user_info($user_id, $fields = []) {
     return $result;
 }
 
-function get_all_users($filter_name, $page, $limit = 50) {
+function get_all_users($filter_name, $page, $limit = 30) {
     global $connect;
 
     $offset = ($page - 1) * $limit;

@@ -37,12 +37,10 @@ $user_info = get_user_info($user_id, ['name']);
                 <p>Gerenciamento de Projetos: Crie, planeje e gerencie projetos de forma eficiente e colaborativa.</p>
                 <p>Atividades Acadêmicas: Acompanhe e participe de atividades acadêmicas que promovem a educação ambiental.</p>
                 <p>Interação e Colaboração: Conecte-se com colegas, professores e mentores para colaborar em projetos e compartilhar ideias.</p>
-                <p>Recursos Educacionais: Acesse uma vasta gama de recursos educacionais sobre conservação ambiental, biodiversidade e sustentabilidade.</p>
                 <br/>
                 <h5><strong>Por que escolher o Instituto Caranguejo:</strong></h5>
                 <p>No Instituto Caranguejo, acreditamos que cada ação conta. Ao utilizar nossa plataforma, você não apenas desenvolve suas habilidades acadêmicas, mas também contribui para um futuro sustentável.</p>
                 <p>Junte-se a nós e faça a diferença!</p>
-                <p>Pronto para começar? Registre-se agora e comece sua jornada para um mundo melhor.</p>
                 <p>Conecte-se. Colabore. Conserve.</p>
             </div>
         </div>

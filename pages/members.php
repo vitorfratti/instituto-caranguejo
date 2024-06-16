@@ -41,16 +41,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['approve_user_id'])) {
 }
 
 $user_id = $_COOKIE['user_id'];
-$user_info = get_user_info($user_id, ['role']);
+$user_info = get_user_info($user_id, ['role', 'approved']);
 
 $role = $user_info['role'];
+$is_approved = intval($user_info['approved']);
 
 $filter_name = isset($_GET['name']) ? $_GET['name'] : '';
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 
 $users = get_all_users($filter_name, $page);
 $total_users = get_total_user_count($filter_name);
-$total_pages = ceil($total_users / 50);
+$total_pages = ceil($total_users / 30);
 
 $error = isset($_SESSION['error']) ? $_SESSION['error'] : '';
 unset($_SESSION['error']);
@@ -77,9 +78,9 @@ unset($_SESSION['error']);
                 </span>
             </div>
             <div class="filter">
-                <form action="" method="GET" id="filter-form">
+                <form action="" method="GET" id="filter-user-form">
                     <div class="input">
-                        <input id="filter-name" type="text" name="name" placeholder="Filtrar por nome" value="<?= htmlspecialchars($filter_name) ?>">
+                        <input id="filter-user-name" type="text" name="name" placeholder="Filtrar por nome" value="<?= htmlspecialchars($filter_name) ?>">
                         <button type="submit">
                             <img src="<?= base_url('assets/images/svg/search.svg') ?>" alt="search">
                         </button>
@@ -98,7 +99,6 @@ unset($_SESSION['error']);
                             </div>
                             <div class="right">
                                 <?php if(
-                                    $user['id'] != $user_id &&
                                     intval($user['approved']) != 1
                                 ): ?>
                                     <span class="approved"> 
@@ -128,32 +128,45 @@ unset($_SESSION['error']);
                                         <?php if(intval($user['role']) != 1 && intval($user['approved']) != 1): ?>
                                             <form action="" method="POST" id="approve-user">
                                                 <input type="hidden" name="approve_user_id" value="<?= $user['id'] ?>">
-                                                <button type="submit">APROVAR USUÁRIO</button>
+                                                <button type="submit">
+                                                    APROVAR USUÁRIO
+                                                    <img src="<?= base_url('assets/images/svg/check.svg') ?>" alt="check">
+                                                </button>
                                             </form>
                                         <?php endif; ?>
                                         <?php if(intval($user['role']) == 2 && intval($user['approved']) == 1): ?>
                                             <form action="" method="POST" id="change-role">
                                                 <input type="hidden" name="change_role_user_id" value="<?= $user['id'] ?>">
                                                 <input type="hidden" name="new_role" value="1">
-                                                <button type="submit">TORNAR ADMIN</button>
+                                                <button type="submit">
+                                                    TORNAR ADMIN
+                                                    <img src="<?= base_url('assets/images/svg/crown.svg') ?>" alt="crown">
+                                                </button>
                                             </form>
                                         <?php elseif(intval($role) == 1 && intval($user['role']) == 1): ?>
                                             <form action="" method="POST" id="change-role">
                                                 <input type="hidden" name="change_role_user_id" value="<?= $user['id'] ?>">
                                                 <input type="hidden" name="new_role" value="2">
-                                                <button type="submit">RETIRAR ADMIN</button>
+                                                <button type="submit">
+                                                    RETIRAR ADMIN
+                                                    <img src="<?= base_url('assets/images/svg/crown-line.svg') ?>" alt="crown-line">
+                                                </button>
                                             </form>
                                         <?php endif; ?>
                                         <?php if(intval($role) == 1): ?>
                                             <form method="POST" id="delete-user">
                                                 <input type="hidden" name="delete_user_id" value="<?= $user['id'] ?>">
-                                                <button type="button">REMOVER USUÁRIO</button>
+                                                <button type="button">
+                                                    REMOVER USUÁRIO
+                                                    <img src="<?= base_url('assets/images/svg/trash.svg') ?>" alt="trash">
+                                                </button>
                                             </form>
                                         <?php endif; ?>
                                     </div>
                                 <?php elseif(
                                     intval($role) == 2 &&
                                     $user['id'] != $user_id &&
+                                    $is_approved &&
                                     intval($user['role'] == 3)
                                 ): ?>
                                     <button class="options-btn">

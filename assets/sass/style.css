@@ -740,7 +740,7 @@ section.members .main .content {
 section.members .main .content .header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  gap: 1rem;
 }
 section.members .main .content .header span:first-child {
   display: flex;
@@ -922,33 +922,33 @@ section.members .main .content .users .card .right .options-card {
   display: flex;
   flex-direction: column;
 }
-section.members .main .content .users .card .right .options-card form#change-role button, section.members .main .content .users .card .right .options-card form#approve-user button {
-  width: 100%;
-  border: none;
-  padding: 1.25rem;
-  background: none;
-  color: #444444;
-  font-weight: 600;
-  border-radius: 6px;
+section.members .main .content .users .card .right .options-card form button {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  border: none;
+  padding: 1.25rem;
+  font-weight: 600;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.1s ease;
 }
+section.members .main .content .users .card .right .options-card form button img {
+  width: 1.5rem;
+}
+section.members .main .content .users .card .right .options-card form#change-role button {
+  background: none;
+  color: #F9A61A;
+}
+section.members .main .content .users .card .right .options-card form#approve-user button {
+  background: none;
+  color: #444444;
+}
 section.members .main .content .users .card .right .options-card form#delete-user button {
-  width: 100%;
-  border: none;
-  padding: 1.25rem;
   background: #ffeeee;
   color: #ff0000;
-  font-weight: 600;
-  border-radius: 6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: all 0.1s ease;
 }
 section.members .main .content .pagination {
   position: relative;
@@ -996,7 +996,7 @@ section.projects .main .content {
 section.projects .main .content .header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  gap: 1rem;
 }
 section.projects .main .content .header span:first-child {
   display: flex;
@@ -1040,9 +1040,56 @@ section.projects .main .content .header span:last-child button img {
     transform: rotate(360deg);
   }
 }
+section.projects .main .content .filter {
+  position: relative;
+  margin: 1.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+section.projects .main .content .filter form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+section.projects .main .content .filter form .input {
+  position: relative;
+  border: 1px solid #444444;
+  border-radius: 6px;
+  color: #000;
+  width: 20rem;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+}
+section.projects .main .content .filter form .input img {
+  margin-left: 1rem;
+}
+section.projects .main .content .filter form .input input {
+  position: relative;
+  width: 100%;
+  font-size: 1.5rem;
+  border: none;
+  outline: none;
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+section.projects .main .content .filter form .input button {
+  background: none;
+  border: none;
+  padding: 0.25rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+section.projects .main .content .filter form .input button img {
+  width: 2rem;
+  margin: 0;
+}
 section.projects .main .content .cards {
   position: relative;
-  margin-top: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1114,6 +1161,10 @@ section.projects .main .content .cards .card .top .options-card form#change-role
   transition: all 0.1s ease;
 }
 section.projects .main .content .cards .card .top .options-card form#delete-project button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
   width: 100%;
   border: none;
   padding: 1.25rem;
@@ -1126,6 +1177,9 @@ section.projects .main .content .cards .card .top .options-card form#delete-proj
   align-items: center;
   cursor: pointer;
   transition: all 0.1s ease;
+}
+section.projects .main .content .cards .card .top .options-card form#delete-project button img {
+  width: 1.5rem;
 }
 section.projects .main .content .cards .card .mid {
   display: flex;
@@ -1159,6 +1213,31 @@ section.projects .main .content .cards .card a.see-project {
   font-weight: 800;
   border-radius: 0 0 6px 6px;
   border-top: 1px solid #444444;
+}
+section.projects .main .content .pagination {
+  position: relative;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+section.projects .main .content .pagination p, section.projects .main .content .pagination a {
+  color: #444444;
+  font-weight: 400;
+}
+section.projects .main .content .pagination .current {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  background: #444444;
+}
+section.projects .main .content .pagination .current p {
+  color: #FFF;
+  font-weight: 400;
+  line-height: 0;
 }
 
 section.settings {
@@ -1301,4 +1380,206 @@ section.settings .main .content .buttons button.submit img {
 section.settings .main .content .buttons button.disabled {
   opacity: 0.7;
   cursor: default;
+}
+
+section.project-single {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  max-height: 100vh;
+}
+section.project-single .main {
+  width: 100%;
+}
+section.project-single .main .content {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  width: 100%;
+  height: calc(100% - 5rem);
+  overflow-y: auto;
+}
+section.project-single .main .content .header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+section.project-single .main .content .header span:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+section.project-single .main .content .header span:first-child h3 {
+  color: #000;
+  font-weight: 700;
+}
+section.project-single .main .content .header span:first-child p {
+  color: #444444;
+  font-weight: 400;
+}
+section.project-single .main .content .header span:last-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+}
+section.project-single .main .content .header span:last-child button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 1rem 2rem;
+  background: #F9A61A;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  border-radius: 6px;
+  border: none;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1450980392);
+  cursor: pointer;
+}
+section.project-single .main .content .header span:last-child button img {
+  width: 1.5rem;
+  animation: infinite loading 1s ease;
+}
+@keyframes loading {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+section.project-single .main .content .header span:last-child p {
+  color: #444444;
+  font-weight: 400;
+}
+section.project-single .main .content .cards {
+  position: relative;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+section.project-single .main .content .cards::after {
+  content: "";
+  width: calc(33% - 1rem);
+}
+section.project-single .main .content .cards .card {
+  position: relative;
+  border-radius: 6px;
+  border: 1px solid #444444;
+  min-width: calc(33% - 1rem);
+  margin-bottom: 1rem;
+}
+section.project-single .main .content .cards .card .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 6px;
+}
+section.project-single .main .content .cards .card .top p {
+  color: #444444;
+  font-weight: 400;
+}
+section.project-single .main .content .cards .card .top button {
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+section.project-single .main .content .cards .card .top button img {
+  width: 2.5rem;
+}
+section.project-single .main .content .cards .card .top button:hover {
+  opacity: 0.8;
+}
+section.project-single .main .content .cards .card .top .options-card {
+  position: absolute;
+  z-index: 99;
+  top: 2.5rem;
+  right: 2rem;
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid #444444;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1450980392);
+  display: flex;
+  flex-direction: column;
+}
+section.project-single .main .content .cards .card .top .options-card form#change-role button, section.project-single .main .content .cards .card .top .options-card form#approve-user button {
+  width: 100%;
+  border: none;
+  padding: 1.25rem;
+  background: none;
+  color: #444444;
+  font-weight: 600;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+section.project-single .main .content .cards .card .top .options-card form#delete-project button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  border: none;
+  padding: 1.25rem;
+  background: #ffeeee;
+  color: #ff0000;
+  font-weight: 600;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+section.project-single .main .content .cards .card .top .options-card form#delete-project button img {
+  width: 1.5rem;
+}
+section.project-single .main .content .cards .card .mid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+section.project-single .main .content .cards .card .mid h4 {
+  color: #000;
+  font-weight: 700;
+}
+section.project-single .main .content .cards .card .bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+section.project-single .main .content .cards .card .bottom p {
+  color: #444444;
+  font-weight: 400;
+}
+section.project-single .main .content .cards .card a.see-project {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #F9A61A;
+  padding: 1rem;
+  text-align: center;
+  color: #FFF;
+  font-weight: 800;
+  border-radius: 0 0 6px 6px;
+  border-top: 1px solid #444444;
 }/*# sourceMappingURL=style.css.map */

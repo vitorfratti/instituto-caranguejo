@@ -15,7 +15,9 @@ section.members {
             overflow-y: auto;
 
             .header {
-                @include between-center;
+                display: flex;
+                justify-content: space-between;
+                gap: 1rem;
 
                 span {
                     &:first-child {
@@ -219,33 +221,40 @@ section.members {
                             @include column;
 
                             form {
-                                &#change-role, &#approve-user {
+                                button {
+                                    @include center-center;
+                                    gap: 0.5rem;
+                                    width: 100%;
+                                    border: none;
+                                    padding: 1.25rem;
+                                    font-weight: 600;
+                                    border-radius: 6px;
+                                    cursor: pointer;
+                                    transition: all .1s ease;
+
+                                    img {
+                                        width: 1.5rem;
+                                    }
+                                }
+
+                                &#change-role {
                                     button {
-                                        width: 100%;
-                                        border: none;
-                                        padding: 1.25rem;
+                                        background: none;
+                                        color: #F9A61A;
+                                    }
+                                }
+
+                                &#approve-user {
+                                    button {
                                         background: none;
                                         color: #444444;
-                                        font-weight: 600;
-                                        border-radius: 6px;
-                                        @include center-center;
-                                        cursor: pointer;
-                                        transition: all .1s ease;
                                     }
                                 }
     
                                 &#delete-user {
                                     button {
-                                        width: 100%;
-                                        border: none;
-                                        padding: 1.25rem;
                                         background: #ffeeee;
                                         color: #ff0000;
-                                        font-weight: 600;
-                                        border-radius: 6px;
-                                        @include center-center;
-                                        cursor: pointer;
-                                        transition: all .1s ease;
                                     }
                                 }
                             }
