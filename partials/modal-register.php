@@ -2,14 +2,14 @@
 
 include_once __DIR__ . '/../controllers/users.php';
 
-$user_id = $_SESSION['user_id'];
+$user_id = $_COOKIE['user_id'];
 $user_info = get_user_info($user_id, ['role']);
 
 $role = $user_info['role'];
 
 ?>
 
-<div class="overlay-modal-register" style="display: none;">
+<div class="overlay-modal-register overlay" style="display: none;">
     <div class="modal-register">
         <div class="header">
             <span>

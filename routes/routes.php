@@ -21,6 +21,9 @@ switch ($route) {
     case 'configuracoes':
         $file = './pages/settings.php';
         break;
+    case 'projetos':
+        $file = './pages/projects.php';
+        break;
     case '':
         $file = './pages/home.php';
         break;

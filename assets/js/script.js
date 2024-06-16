@@ -1,5 +1,72 @@
 $(document).ready(() => {
 
+	// Confirmar remoção de projeto
+	$('#delete-project button').click(function() {
+		if (confirm('Tem certeza que deseja remover este projeto?')) {
+			$(this).closest('form').submit()
+		}
+	})
+
+	// Confirmar remoção de usuário
+	$('#delete-user button').click(function() {
+		if (confirm('Tem certeza que deseja remover este usuário?')) {
+			$(this).closest('form').submit()
+		}
+	})
+
+	// Data atual no input de data - Cadastro de Projetos
+	$('.projects input[name="project-date"]').val(new Date().toISOString().split('T')[0])
+
+	// Cadastro de Projetos - Validação
+	$('#create-project .submit button').click(function() {
+
+		// Valida nome
+		let nameValid = false;
+		if($('#create-project span[data-input="project-name"] input').val().length >= 1) {
+			$('#create-project span[data-input="project-name"] .invalid-text').addClass('none')
+			$('#create-project span[data-input="project-name"] .input').removeClass('invalid-input')
+			nameValid = true;
+		} else {
+			$('#create-project span[data-input="project-name"] .invalid-text').removeClass('none')
+			$('#create-project span[data-input="project-name"] .input').addClass('invalid-input')
+			nameValid = false;
+		}
+
+		// Valida descrição
+		let descriptionValid = false;
+		if($('#create-project span[data-input="project-description"] textarea').val().length >= 1) {
+			$('#create-project span[data-input="project-description"] .invalid-text').addClass('none')
+			$('#create-project span[data-input="project-description"] .input').removeClass('invalid-input')
+			descriptionValid = true;
+		} else {
+			$('#create-project span[data-input="project-description"] .invalid-text').removeClass('none')
+			$('#create-project span[data-input="project-description"] .input').addClass('invalid-input')
+			descriptionValid = false;
+		}
+
+		if(nameValid && descriptionValid) {
+			$('#create-project .submit button').prop('type', 'submit')
+		} else {
+			$('#create-project .submit button').prop('type', 'button')
+		}
+
+	})
+
+	// Acões do Modal - Criar Projeto
+	$('.projects .create-project').click(function() {
+		$('.overlay-modal-create-project').show()
+	})
+
+	$('.projects .modal-create-project .close-btn').click(function() {
+        $('.overlay-modal-create-project').hide()
+    })
+
+	$('.overlay-modal-create-project').click(function(event) {
+		if (event.target === this) {
+			$(this).hide()
+		}
+	})	
+
 	// Verificação - Formulário de editar usuário 
 	function checkSettingsFields() {
 		let checked = 0
@@ -57,7 +124,7 @@ $(document).ready(() => {
         $('.modal-register .form-register[data-role="' + $(this).data('role') + '"]').show()
     })
 
-	// Toggle nas options do card do usuário
+	// Toggle nas options do card
 	$('.options-btn').click(function(event) {
         event.stopPropagation()
         $('.options-card').not($(this).siblings('.options-card')).hide()

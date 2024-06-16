@@ -1,0 +1,60 @@
+.modal-create-project {
+    position: relative;
+    z-index: 5;
+    padding: 3rem;
+    box-shadow: 0 0 30px #00000025;
+    border: 1px solid #444444;
+    background: #FFF;
+    border-radius: 6px;
+    min-width: 50rem;
+    max-width: 80rem;
+
+    .header {
+        @include between-center;
+        gap: 1rem;
+
+        span {
+            @include column;
+            gap: 0.25rem;
+        }
+
+        h3 {
+            color: #000;
+            font-weight: 700;
+        }
+
+        p {
+            color: #444444;
+            font-weight: 400;
+        }
+
+        button {
+            position: absolute;
+            z-index: 99;
+            top: 0;
+            right: 0;
+            background: none;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 6px;
+            @include center-center;
+            cursor: pointer;
+
+            img {
+                width: 2.5rem;
+            }
+        }
+    }
+
+    .main {
+        margin: 1.25rem 0 0.25rem 0;
+
+        .form {
+            margin-top: 1.5rem !important;
+            
+            span, .input, .submit, .submit button {
+                width: 100% !important;
+            }
+        }
+    }
+}

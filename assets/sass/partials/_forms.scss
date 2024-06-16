@@ -28,7 +28,7 @@ form.form {
             margin-left: 1rem;
         }
     
-        input {
+        input, textarea {
             position: relative;
             width: 100%;
             font-size: 1.5rem;
@@ -36,6 +36,7 @@ form.form {
             outline: none;
             padding: 1rem;
             border-radius: 6px;
+            resize: none;
         }
     
         button {

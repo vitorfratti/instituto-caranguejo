@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['approve_user_id'])) {
     }
 }
 
-$user_id = $_SESSION['user_id'];
+$user_id = $_COOKIE['user_id'];
 $user_info = get_user_info($user_id, ['role']);
 
 $role = $user_info['role'];
@@ -147,7 +147,7 @@ unset($_SESSION['error']);
                                         <?php if(intval($role) == 1): ?>
                                             <form method="POST" id="delete-user">
                                                 <input type="hidden" name="delete_user_id" value="<?= $user['id'] ?>">
-                                                <button type="submit">REMOVER USUÁRIO</button>
+                                                <button type="button">REMOVER USUÁRIO</button>
                                             </form>
                                         <?php endif; ?>
                                     </div>

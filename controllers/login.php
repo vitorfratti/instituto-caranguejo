@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $cookie_value = bin2hex(random_bytes(16));
             setcookie('isAuth', $cookie_value, time() + 86400, "/");
 
-            $_SESSION['user_id'] = $user_id;
+            setcookie('user_id', $user_id, time() + 86400, "/");
 
             header("Location: " . base_url('/'));
             exit;

@@ -5,6 +5,7 @@ include_once __DIR__ . '/../db/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     setcookie('isAuth', '', time() - 3600, '/');
+    setcookie('user_id', '', time() - 3600, '/');
     
     header("Location: " . base_url('/login'));
     exit;

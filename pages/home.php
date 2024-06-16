@@ -8,7 +8,7 @@ if (!isset($_COOKIE['isAuth'])) {
 
 include_once __DIR__ . '/../controllers/users.php';
 
-$user_id = $_SESSION['user_id'];
+$user_id = $_COOKIE['user_id'];
 $user_info = get_user_info($user_id, ['name']);
 
 ?>
@@ -47,5 +47,4 @@ $user_info = get_user_info($user_id, ['name']);
             </div>
         </div>
     </div>
-    <?php include __DIR__ . '/../partials/modal-register.php'; ?>
 </section>
