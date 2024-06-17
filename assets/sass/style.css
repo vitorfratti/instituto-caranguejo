@@ -222,7 +222,7 @@ input[type=search]::-webkit-search-results-decoration {
   align-items: center;
   padding: 0 2rem;
 }
-.topbar span span {
+.topbar span a {
   background: none;
   border: none;
   padding: 0.5rem;
@@ -232,6 +232,8 @@ input[type=search]::-webkit-search-results-decoration {
   gap: 0.5rem;
   font-size: 1.4rem;
   border-radius: 4px;
+  text-decoration: none;
+  color: #000;
 }
 
 form.form {
@@ -740,7 +742,7 @@ section.members .main .content {
 section.members .main .content .header {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 2rem;
 }
 section.members .main .content .header span:first-child {
   display: flex;
@@ -996,7 +998,7 @@ section.projects .main .content {
 section.projects .main .content .header {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 2rem;
 }
 section.projects .main .content .header span:first-child {
   display: flex;
@@ -1402,7 +1404,7 @@ section.project-single .main .content {
 section.project-single .main .content .header {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 2rem;
 }
 section.project-single .main .content .header span:first-child {
   display: flex;
@@ -1438,6 +1440,7 @@ section.project-single .main .content .header span:last-child button {
   border-radius: 6px;
   border: none;
   box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1450980392);
+  white-space: nowrap;
   cursor: pointer;
 }
 section.project-single .main .content .header span:last-child button img {

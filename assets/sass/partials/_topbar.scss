@@ -14,7 +14,7 @@
         align-items: center;
         padding: 0 2rem;
 
-        span {
+        a {
             background: none;
             border: none;
             padding: 0.5rem;
@@ -22,6 +22,8 @@
             gap: 0.5rem;
             font-size: 1.4rem;
             border-radius: 4px;
+            text-decoration: none;
+            color: #000;
         }
     }
 }

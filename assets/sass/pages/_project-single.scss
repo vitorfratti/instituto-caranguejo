@@ -17,7 +17,7 @@ section.project-single {
             .header {
                 display: flex;
                 justify-content: space-between;
-                gap: 1rem;
+                gap: 2rem;
 
                 span {
                     &:first-child {
@@ -52,6 +52,7 @@ section.project-single {
                             border-radius: 6px;
                             border: none;
                             box-shadow: 0 2px 1px #00000025;
+                            white-space: nowrap;
                             cursor: pointer;
     
                             img {

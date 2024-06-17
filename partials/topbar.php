@@ -10,10 +10,12 @@ $user_info = get_user_info($user_id, ['name']);
 <nav class="topbar">
     <span>
         <div class="profile">
-            <span>
+            <a
+            data-page="settings"
+            href="<?= base_url('/configuracoes') ?>">
                 <img src="<?= base_url('assets/images/svg/user-profile.svg') ?>" alt="user-profile">
                 <?= $user_info['name'] ?>
-            </span>
+            </a>
         </div>
     </span>
 </nav>
