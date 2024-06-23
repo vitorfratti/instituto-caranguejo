@@ -1,6 +1,13 @@
 $(document).ready(() => {
 
-	// Url atual para redirecionamento das ações - Cadastro de Atividades
+	// Confirmar remoção da atividade
+	$('#delete-activity button').click(function() {
+		if (confirm('Tem certeza que deseja remover esta atividade?')) {
+			$(this).closest('form').submit()
+		}
+	})
+
+	// Url atual para redirecionamento das ações - Atividades
 	$('.project-single input[name="current-project-url"]').val(window.location.href)
 
 	// Data atual no input de data - Cadastro de Atividades

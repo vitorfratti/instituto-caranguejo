@@ -178,21 +178,6 @@ section.projects {
                             @include column;
 
                             form {
-                                &#change-role, &#approve-user {
-                                    button {
-                                        width: 100%;
-                                        border: none;
-                                        padding: 1.25rem;
-                                        background: none;
-                                        color: #444444;
-                                        font-weight: 600;
-                                        border-radius: 6px;
-                                        @include center-center;
-                                        cursor: pointer;
-                                        transition: all .1s ease;
-                                    }
-                                }
-    
                                 &#delete-project {
                                     button {
                                         @include center-center;

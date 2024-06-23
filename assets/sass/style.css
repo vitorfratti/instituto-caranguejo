@@ -1205,20 +1205,6 @@ section.projects .main .content .cards .card .top .options-card {
   display: flex;
   flex-direction: column;
 }
-section.projects .main .content .cards .card .top .options-card form#change-role button, section.projects .main .content .cards .card .top .options-card form#approve-user button {
-  width: 100%;
-  border: none;
-  padding: 1.25rem;
-  background: none;
-  color: #444444;
-  font-weight: 600;
-  border-radius: 6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: all 0.1s ease;
-}
 section.projects .main .content .cards .card .top .options-card form#delete-project button {
   display: flex;
   justify-content: center;
@@ -1623,21 +1609,7 @@ section.project-single .main .content .cards .card .top .options-card {
   display: flex;
   flex-direction: column;
 }
-section.project-single .main .content .cards .card .top .options-card form#change-role button, section.project-single .main .content .cards .card .top .options-card form#approve-user button {
-  width: 100%;
-  border: none;
-  padding: 1.25rem;
-  background: none;
-  color: #444444;
-  font-weight: 600;
-  border-radius: 6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: all 0.1s ease;
-}
-section.project-single .main .content .cards .card .top .options-card form#delete-project button {
+section.project-single .main .content .cards .card .top .options-card form#delete-activity button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1655,7 +1627,7 @@ section.project-single .main .content .cards .card .top .options-card form#delet
   cursor: pointer;
   transition: all 0.1s ease;
 }
-section.project-single .main .content .cards .card .top .options-card form#delete-project button img {
+section.project-single .main .content .cards .card .top .options-card form#delete-activity button img {
   width: 1.5rem;
 }
 section.project-single .main .content .cards .card .mid {
@@ -1679,7 +1651,7 @@ section.project-single .main .content .cards .card .bottom p {
   color: #444444;
   font-weight: 400;
 }
-section.project-single .main .content .cards .card a.see-project {
+section.project-single .main .content .cards .card a.see-activity {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1690,4 +1662,29 @@ section.project-single .main .content .cards .card a.see-project {
   font-weight: 800;
   border-radius: 0 0 6px 6px;
   border-top: 1px solid #444444;
+}
+section.project-single .main .content .pagination {
+  position: relative;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+section.project-single .main .content .pagination p, section.project-single .main .content .pagination a {
+  color: #444444;
+  font-weight: 400;
+}
+section.project-single .main .content .pagination .current {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  background: #444444;
+}
+section.project-single .main .content .pagination .current p {
+  color: #FFF;
+  font-weight: 400;
+  line-height: 0;
 }/*# sourceMappingURL=style.css.map */

@@ -187,22 +187,7 @@ section.project-single {
                             @include column;
 
                             form {
-                                &#change-role, &#approve-user {
-                                    button {
-                                        width: 100%;
-                                        border: none;
-                                        padding: 1.25rem;
-                                        background: none;
-                                        color: #444444;
-                                        font-weight: 600;
-                                        border-radius: 6px;
-                                        @include center-center;
-                                        cursor: pointer;
-                                        transition: all .1s ease;
-                                    }
-                                }
-    
-                                &#delete-project {
+                                &#delete-activity {
                                     button {
                                         @include center-center;
                                         gap: 0.5rem;
@@ -247,7 +232,7 @@ section.project-single {
                         }
                     }
 
-                    a.see-project {
+                    a.see-activity {
                         @include center-center;
                         background: #F9A61A;
                         padding: 1rem;
@@ -256,6 +241,33 @@ section.project-single {
                         font-weight: 800;
                         border-radius: 0 0 6px 6px;
                         border-top: 1px solid #444444;
+                    }
+                }
+            }
+
+            .pagination {
+                position: relative;
+                margin-top: 2rem;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+
+                p, a {
+                    color: #444444;
+                    font-weight: 400;
+                }
+
+                .current {
+                    @include center-center;
+                    border-radius: 50%;
+                    width: 2rem;
+                    height: 2rem;
+                    background: #444444;
+
+                    p {
+                        color: #FFF;
+                        font-weight: 400;
+                        line-height: 0;
                     }
                 }
             }

@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create-activity'])) {
     exit;
 }
 
-function delete_activity($activity_id) {
+function delete_activity($activity_id, $current_project_url) {
     global $connect;
 
     $query = "DELETE FROM activities WHERE id = ?";
@@ -77,7 +77,7 @@ function delete_activity($activity_id) {
     $stmt->bind_param('i', $activity_id);
     $stmt->execute();
     $stmt->close();
-    header("Location: " . base_url('/projetos'));
+    header("Location: " . $current_project_url);
 
     return true;
 }

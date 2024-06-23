@@ -29,6 +29,13 @@ $activities = get_all_activities($filter_name, $limit, $offset, $project_id);
 $total_activities = count_all_activities($filter_name, $project_id);
 $total_pages = ceil($total_activities / $limit);
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_activity_id'])) {
+    $activity_id_to_delete = intval($_POST['delete_activity_id']);
+    $current_project_url = $_POST['current-project-url'];
+    delete_activity($activity_id_to_delete, $current_project_url);
+    exit;
+}
+
 $error = isset($_SESSION['error']) ? $_SESSION['error'] : '';
 unset($_SESSION['error']);
 
@@ -82,8 +89,9 @@ unset($_SESSION['error']);
                                     <img src="<?= base_url('assets/images/svg/dots.svg') ?>" alt="dots">
                                 </button>
                                 <div class="options-card" style="display: none;">
-                                    <form method="POST" id="delete-project">
-                                        <input type="hidden" name="delete_project_id" value="<?= $activity['id'] ?>">
+                                    <form method="POST" id="delete-activity">
+                                        <input type="hidden" name="delete_activity_id" value="<?= $activity['id'] ?>">
+                                        <input type="hidden" name="current-project-url">
                                         <button type="button">
                                             REMOVER ATIVIDADE
                                             <img src="<?= base_url('assets/images/svg/trash.svg') ?>" alt="trash">
@@ -95,7 +103,7 @@ unset($_SESSION['error']);
                                 <h4><?= $activity['name'] ?></h4>
                             </div>
                             <div class="bottom"></div>
-                            <a href="<?= base_url('/projeto/' . $project_slug . '/' . $activity['slug']) ?>" class="see-project">VER ATIVIDADE</a>
+                            <a href="<?= base_url('/projeto/' . $project_slug . '/' . $activity['slug']) ?>" class="see-activity">VER ATIVIDADE</a>
                         </div>
                     <?php endforeach; ?>
                 <?php else: ?>
