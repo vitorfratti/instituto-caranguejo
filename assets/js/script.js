@@ -1,5 +1,49 @@
 $(document).ready(() => {
 
+	// Url atual para redirecionamento das ações - Cadastro de Atividades
+	$('.project-single input[name="current-project-url"]').val(window.location.href)
+
+	// Data atual no input de data - Cadastro de Atividades
+	$('.project-single input[name="activity-date"]').val(new Date().toISOString().split('T')[0])
+
+	// Cadastro de Atividades - Validação
+	$('#create-activity .submit button').click(function() {
+
+		// Valida nome
+		let nameValid = false;
+		if($('#create-activity span[data-input="activity-name"] input').val().length >= 1) {
+			$('#create-activity span[data-input="activity-name"] .invalid-text').addClass('none')
+			$('#create-activity span[data-input="activity-name"] .input').removeClass('invalid-input')
+			nameValid = true;
+		} else {
+			$('#create-activity span[data-input="activity-name"] .invalid-text').removeClass('none')
+			$('#create-activity span[data-input="activity-name"] .input').addClass('invalid-input')
+			nameValid = false;
+		}
+
+		if(nameValid) {
+			$('#create-activity .submit button').prop('type', 'submit')
+		} else {
+			$('#create-activity .submit button').prop('type', 'button')
+		}
+
+	})
+
+	// Acões do Modal - Criar Atividade
+	$('.project-single .create-activity').click(function() {
+		$('.overlay-modal-create-activity').show()
+	})
+
+	$('.project-single .modal-create-activity .close-btn').click(function() {
+        $('.overlay-modal-create-activity').hide()
+    })
+
+	$('.overlay-modal-create-activity').click(function(event) {
+		if (event.target === this) {
+			$(this).hide()
+		}
+	})
+
 	// Confirmar remoção de projeto
 	$('#delete-project button').click(function() {
 		if (confirm('Tem certeza que deseja remover este projeto?')) {

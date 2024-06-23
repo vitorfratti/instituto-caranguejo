@@ -3,7 +3,11 @@
 $route = isset($_GET['url']) ? $_GET['url'] : '';
 
 function is_project_route($route) {
-    return preg_match('/^projeto\/([a-zA-Z0-9-]+)$/', $route, $matches);
+    return preg_match('/^projeto\/([a-zA-Z0-9-]+)$/', $route);
+}
+
+function is_activity_route($route) {
+    return preg_match('/^projeto\/([a-zA-Z0-9-]+)\/([a-zA-Z0-9-]+)$/', $route);
 }
 
 if (is_project_route($route)) {
@@ -11,6 +15,13 @@ if (is_project_route($route)) {
     $slug = $matches[1];
     $file = './pages/project-single.php';
     $_GET['slug'] = $slug;
+} elseif (is_activity_route($route)) {
+    preg_match('/^projeto\/([a-zA-Z0-9-]+)\/([a-zA-Z0-9-]+)$/', $route, $matches);
+    $project_slug = $matches[1];
+    $activity_slug = $matches[2];
+    $file = './pages/activity-single.php';
+    $_GET['project_slug'] = $project_slug;
+    $_GET['activity_slug'] = $activity_slug;
 } else {
     switch ($route) {
         case 'tipos-de-cadastro':

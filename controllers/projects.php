@@ -24,7 +24,7 @@ function create_project() {
         exit;
     }
 
-    $slug = create_slug($project_name);
+    $slug = create_project_slug($project_name);
 
     $query = "INSERT INTO projects (name, description, link, date, slug) VALUES (?, ?, ?, ?, ?)";
     $stmt = $connect->prepare($query);
@@ -35,7 +35,7 @@ function create_project() {
     exit;
 }
 
-function create_slug($project_name) {
+function create_project_slug($project_name) {
     $slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $project_name)));
     
     global $connect;
