@@ -90,7 +90,7 @@ function get_all_projects($filter_name = '', $limit = 20, $offset = 0) {
         $query .= " WHERE name LIKE ?";
         $filter_name = '%' . $filter_name . '%';
     }
-    $query .= " LIMIT ? OFFSET ?";
+    $query .= " ORDER BY date DESC LIMIT ? OFFSET ?";
 
     $stmt = $connect->prepare($query);
     if (!empty($filter_name)) {

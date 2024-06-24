@@ -72,21 +72,23 @@ unset($_SESSION['error']);
                     <p>Aqui ficam todos os usuários cadastrados na plataforma</p>
                 </span>
                 <span>
-                    <?php if (intval($role) == 1 || intval($role) == 2): ?>
+                    <?php if(intval($role) == 1 || (intval($role) == 2 && $is_approved == 1)): ?>
                         <button class="add-user">ADICIONAR USUÁRIO</button>
                     <?php endif; ?>
                 </span>
             </div>
-            <div class="filter">
-                <form action="" method="GET" id="filter-user-form">
-                    <div class="input">
-                        <input id="filter-user-name" type="text" name="name" placeholder="Filtrar por nome" value="<?= htmlspecialchars($filter_name) ?>">
-                        <button type="submit">
-                            <img src="<?= base_url('assets/images/svg/search.svg') ?>" alt="search">
-                        </button>
-                    </div>
-                </form>
-            </div>
+            <?php if(count($users) > 0): ?>
+                <div class="filter">
+                    <form action="" method="GET" id="filter-user-form">
+                        <div class="input">
+                            <input id="filter-user-name" type="text" name="name" placeholder="Filtrar por nome" value="<?= htmlspecialchars($filter_name) ?>">
+                            <button type="submit">
+                                <img src="<?= base_url('assets/images/svg/search.svg') ?>" alt="search">
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            <?php endif; ?>
             <div class="users">
                 <?php if(count($users) > 0): ?>
                     <?php foreach($users as $user): ?>

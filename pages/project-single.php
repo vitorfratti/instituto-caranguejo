@@ -10,9 +10,10 @@ include_once __DIR__ . '/../controllers/projects.php';
 include_once __DIR__ . '/../controllers/activities.php';
 
 $user_id = $_COOKIE['user_id'];
-$user_info = get_user_info($user_id, ['name', 'role']);
+$user_info = get_user_info($user_id, ['name', 'role', 'approved']);
 
 $role = $user_info['role'];
+$is_approved = $user_info['approved'];
 
 $filter_name = isset($_GET['name']) ? $_GET['name'] : '';
 
@@ -55,26 +56,28 @@ unset($_SESSION['error']);
                     <p><?= $project_info['description'] ?></p>
                 </span>
                 <span>
-                    <?php if (intval($role) == 1 || intval($role) == 2): ?>
+                    <?php
+                        $date = new DateTime($project_info['date']);
+                        $formatted_date = $date->format('d/m/Y');
+                    ?>
+                    <p><?= $formatted_date ?></p>
+                    <?php if(intval($role) == 1 || (intval($role) == 2 && $is_approved == 1)): ?>
                         <button class="create-activity">ADICIONAR ATIVIDADE</button>
                     <?php endif; ?>
                 </span>
             </div>
-            <div class="filter">
-                <form action="" method="GET" id="filter-project-form">
-                    <div class="input">
-                        <input id="filter-project-name" type="text" name="name" placeholder="Filtrar por nome" value="<?= htmlspecialchars($filter_name) ?>">
-                        <button type="submit">
-                            <img src="<?= base_url('assets/images/svg/search.svg') ?>" alt="search">
-                        </button>
-                    </div>
-                </form>
-                <?php
-                    $date = new DateTime($project_info['date']);
-                    $formatted_date = $date->format('d/m/Y');
-                ?>
-                <p><?= $formatted_date ?></p>
-            </div>
+            <?php if(count($activities) > 0): ?>
+                <div class="filter">
+                    <form action="" method="GET" id="filter-activity-form">
+                        <div class="input">
+                            <input id="filter-activity-name" type="text" name="name" placeholder="Filtrar por nome" value="<?= htmlspecialchars($filter_name) ?>">
+                            <button type="submit">
+                                <img src="<?= base_url('assets/images/svg/search.svg') ?>" alt="search">
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            <?php endif; ?>
             <div class="cards">
                 <?php if(count($activities) > 0): ?>
                     <?php foreach($activities as $activity): ?>
@@ -85,19 +88,21 @@ unset($_SESSION['error']);
                         <div class="card" data-id="<?= $activity['id'] ?>">
                             <div class="top">
                                 <p><?= $formatted_date ?></p>
-                                <button class="options-btn">
-                                    <img src="<?= base_url('assets/images/svg/dots.svg') ?>" alt="dots">
-                                </button>
-                                <div class="options-card" style="display: none;">
-                                    <form method="POST" id="delete-activity">
-                                        <input type="hidden" name="delete_activity_id" value="<?= $activity['id'] ?>">
-                                        <input type="hidden" name="current-project-url">
-                                        <button type="button">
-                                            REMOVER ATIVIDADE
-                                            <img src="<?= base_url('assets/images/svg/trash.svg') ?>" alt="trash">
-                                        </button>
-                                    </form>
-                                </div>
+                                <?php if (intval($role) == 1 || (intval($role) == 2 && $is_approved == 1)): ?>
+                                    <button class="options-btn">
+                                        <img src="<?= base_url('assets/images/svg/dots.svg') ?>" alt="dots">
+                                    </button>
+                                    <div class="options-card" style="display: none;">
+                                        <form method="POST" id="delete-activity">
+                                            <input type="hidden" name="delete_activity_id" value="<?= $activity['id'] ?>">
+                                            <input type="hidden" name="current-project-url">
+                                            <button type="button">
+                                                REMOVER ATIVIDADE
+                                                <img src="<?= base_url('assets/images/svg/trash.svg') ?>" alt="trash">
+                                            </button>
+                                        </form>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                             <div class="mid">
                                 <h4><?= $activity['name'] ?></h4>
@@ -107,7 +112,7 @@ unset($_SESSION['error']);
                         </div>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <p class="not-found">Nenhum resultado encontrado.</p>
+                    <p class="not-found">Nenhuma atividade encontrada.</p>
                 <?php endif; ?>
             </div>
             <?php if ($total_pages > 1): ?>

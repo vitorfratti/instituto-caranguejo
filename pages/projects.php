@@ -7,11 +7,13 @@ if (!isset($_COOKIE['isAuth'])) {
 
 include_once __DIR__ . '/../controllers/users.php';
 include_once __DIR__ . '/../controllers/projects.php';
+include_once __DIR__ . '/../controllers/activities.php';
 
 $user_id = $_COOKIE['user_id'];
-$user_info = get_user_info($user_id, ['name', 'role']);
+$user_info = get_user_info($user_id, ['name', 'role', 'approved']);
 
 $role = $user_info['role'];
+$is_approved = $user_info['approved'];
 
 $filter_name = isset($_GET['name']) ? $_GET['name'] : '';
 
@@ -48,21 +50,23 @@ unset($_SESSION['error']);
                     <p>Aqui ficam todos os projetos cadastrados na plataforma</p>
                 </span>
                 <span>
-                    <?php if (intval($role) == 1 || intval($role) == 2): ?>
+                    <?php if(intval($role) == 1 || (intval($role) == 2 && $is_approved == 1)): ?>
                         <button class="create-project">CRIAR PROJETO</button>
                     <?php endif; ?>
                 </span>
             </div>
-            <div class="filter">
-                <form action="" method="GET" id="filter-project-form">
-                    <div class="input">
-                        <input id="filter-project-name" type="text" name="name" placeholder="Filtrar por nome" value="<?= htmlspecialchars($filter_name) ?>">
-                        <button type="submit">
-                            <img src="<?= base_url('assets/images/svg/search.svg') ?>" alt="search">
-                        </button>
-                    </div>
-                </form>
-            </div>
+            <?php if(count($projects) > 0): ?>
+                <div class="filter">
+                    <form action="" method="GET" id="filter-project-form">
+                        <div class="input">
+                            <input id="filter-project-name" type="text" name="name" placeholder="Filtrar por nome" value="<?= htmlspecialchars($filter_name) ?>">
+                            <button type="submit">
+                                <img src="<?= base_url('assets/images/svg/search.svg') ?>" alt="search">
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            <?php endif; ?>
             <div class="cards">
                 <?php if(count($projects) > 0): ?>
                     <?php foreach($projects as $project): ?>
@@ -73,23 +77,36 @@ unset($_SESSION['error']);
                         <div class="card" data-id="<?= $project['id'] ?>">
                             <div class="top">
                                 <p><?= $formatted_date ?></p>
-                                <button class="options-btn">
-                                    <img src="<?= base_url('assets/images/svg/dots.svg') ?>" alt="dots">
-                                </button>
-                                <div class="options-card" style="display: none;">
-                                    <form method="POST" id="delete-project">
-                                        <input type="hidden" name="delete_project_id" value="<?= $project['id'] ?>">
-                                        <button type="button">
-                                            REMOVER PROJETO
-                                            <img src="<?= base_url('assets/images/svg/trash.svg') ?>" alt="trash">
-                                        </button>
-                                    </form>
-                                </div>
+                                <?php if (intval($role) == 1 || (intval($role) == 2 && $is_approved == 1)): ?>
+                                    <button class="options-btn">
+                                        <img src="<?= base_url('assets/images/svg/dots.svg') ?>" alt="dots">
+                                    </button>
+                                    <div class="options-card" style="display: none;">
+                                        <form method="POST" id="delete-project">
+                                            <input type="hidden" name="delete_project_id" value="<?= $project['id'] ?>">
+                                            <button type="button">
+                                                REMOVER PROJETO
+                                                <img src="<?= base_url('assets/images/svg/trash.svg') ?>" alt="trash">
+                                            </button>
+                                        </form>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                             <div class="mid">
                                 <h4><?= $project['name'] ?></h4>
                             </div>
-                            <div class="bottom"></div>
+                            <div class="bottom">
+                                <?php
+                                    $count_activities = count_all_activities(null, $project['id']);
+                                ?>
+                                <p>
+                                    <?php if ($count_activities > 0): ?>
+                                        <?= $count_activities . ($count_activities > 1 ? ' atividades' : ' atividade'); ?>
+                                    <?php else: ?>
+                                        Nenhuma atividade
+                                    <?php endif; ?>
+                                </p>
+                            </div>
                             <a href="<?= base_url('/projeto/' . $project['slug']) ?>" class="see-project">VER PROJETO</a>
                         </div>
                     <?php endforeach; ?>
