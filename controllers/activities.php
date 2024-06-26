@@ -156,4 +156,119 @@ function get_activity_info($slug) {
     }
 }
 
+function add_students_to_activity($activity_id, $user_ids) {
+    global $connect;
+    $query_insert = "INSERT INTO student_activities (user_id, activity_id) VALUES (?, ?)";
+    $stmt_insert = $connect->prepare($query_insert);
+
+    foreach ($user_ids as $user_id) {
+        $query_check = "SELECT COUNT(*) FROM student_activities WHERE user_id = ? AND activity_id = ?";
+        $stmt_check = $connect->prepare($query_check);
+        $stmt_check->bind_param('ii', $user_id, $activity_id);
+        $stmt_check->execute();
+        $stmt_check->bind_result($count);
+        $stmt_check->fetch();
+        $stmt_check->close();
+
+        if ($count == 0) {
+            $stmt_insert->bind_param('ii', $user_id, $activity_id);
+            $stmt_insert->execute();
+        }
+    }
+
+    $stmt_insert->close();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add-students-to-activity'])) {
+    $activity_id = $_POST['activity-id'];
+    $user_ids = explode(',', $_POST['students-ids']);
+    $current_activity_url = $_POST['current-activity-url'];
+
+    add_students_to_activity($activity_id, $user_ids);
+
+    header("Location: " . $current_activity_url);
+    exit;
+}
+
+function get_students_by_activity($activity_id, $filter_name, $page, $limit = 30) {
+    global $connect;
+
+    $offset = ($page - 1) * $limit;
+
+    $filter_query = $filter_name ? "AND users.name LIKE ?" : "";
+    $sql = "
+        SELECT users.*
+        FROM users
+        JOIN student_activities ON users.id = student_activities.user_id
+        WHERE student_activities.activity_id = ? $filter_query
+        LIMIT ? OFFSET ?
+    ";
+    $stmt = $connect->prepare($sql);
+
+    if ($filter_name) {
+        $filter_name_param = '%' . $filter_name . '%';
+        $stmt->bind_param("isii", $activity_id, $filter_name_param, $limit, $offset);
+    } else {
+        $stmt->bind_param("iii", $activity_id, $limit, $offset);
+    }
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $users = $result->fetch_all(MYSQLI_ASSOC);
+
+    $stmt->close();
+    
+    return $users;
+}
+
+function get_total_student_count_by_activity($activity_id, $filter_name) {
+    global $connect;
+
+    $filter_query = $filter_name ? "AND users.name LIKE ?" : "";
+    $sql = "
+        SELECT COUNT(*) as total
+        FROM users
+        JOIN student_activities ON users.id = student_activities.user_id
+        WHERE student_activities.activity_id = ? $filter_query
+    ";
+    
+    $stmt = $connect->prepare($sql);
+
+    if ($filter_name) {
+        $filter_name_param = '%' . $filter_name . '%';
+        $stmt->bind_param("is", $activity_id, $filter_name_param);
+    } else {
+        $stmt->bind_param("i", $activity_id);
+    }
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+
+    $stmt->close();
+    
+    return $row['total'];
+}
+
+function remove_student_from_activity($user_id, $activity_id) {
+    global $connect;
+
+    $query = "DELETE FROM student_activities WHERE user_id = ? AND activity_id = ?";
+    $stmt = $connect->prepare($query);
+    $stmt->bind_param('ii', $user_id, $activity_id);
+    $stmt->execute();
+    $stmt->close();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove-user-from-activity'])) {
+    $user_id = $_POST['user_id'];
+    $activity_id = $_POST['activity_id'];
+    $current_activity_url = $_POST['current-activity-url'];
+
+    remove_student_from_activity($user_id, $activity_id);
+
+    header("Location: " . $current_activity_url);
+    exit;
+}
+
 ?>

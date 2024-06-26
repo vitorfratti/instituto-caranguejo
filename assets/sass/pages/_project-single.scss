@@ -224,8 +224,9 @@ section.project-single {
                     }
 
                     .bottom {
-                        @include between-center;
+                        @include center-center;
                         gap: 1rem;
+                        padding: 1rem;
 
                         p {
                             color: #444444;

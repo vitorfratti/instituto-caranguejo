@@ -28,8 +28,9 @@ form.form {
             margin-left: 1rem;
         }
     
-        input, textarea {
+        input, textarea, select {
             position: relative;
+            background: #fff;
             width: 100%;
             font-size: 1.5rem;
             border: none;

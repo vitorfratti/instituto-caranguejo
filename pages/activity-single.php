@@ -16,11 +16,16 @@ $role = $user_info['role'];
 $is_approved = $user_info['approved'];
 
 $filter_name = isset($_GET['name']) ? $_GET['name'] : '';
+$page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 
 $activity_slug = isset($_GET['activity_slug']) ? $_GET['activity_slug'] : '';
 $activity_info = get_activity_info($activity_slug);
 $activity_slug = $activity_info['slug'];
 $activity_id = $activity_info['id'];
+
+$students = get_students_by_activity($activity_id, $filter_name, $page);
+$total_students = get_total_student_count_by_activity($activity_id, $filter_name);
+$total_pages = ceil($total_students / 30);
 
 $error = isset($_SESSION['error']) ? $_SESSION['error'] : '';
 unset($_SESSION['error']);
@@ -47,7 +52,7 @@ unset($_SESSION['error']);
                     ?>
                     <p><?= $formatted_date ?></p>
                     <?php if(intval($role) == 1 || (intval($role) == 2 && $is_approved == 1)): ?>
-                        <button class="add-student">ADICIONAR ALUNO</button>
+                        <button class="add-student-activity">ADICIONAR ALUNO</button>
                     <?php endif; ?>
                 </span>
             </div>
@@ -61,7 +66,91 @@ unset($_SESSION['error']);
                     </div>
                 </form>
             </div>
+            <div class="students">
+                <?php if(count($students) > 0): ?>
+                    <?php foreach($students as $user): ?>
+                        <div class="card" data-role="<?= $user['role'] ?>">
+                            <div class="left">
+                                <span class="infos">
+                                    <h5><?= $user['name'] ?></h5>
+                                    <p><?= $user['email'] ?></p>
+                                </span>
+                            </div>
+                            <div class="right">
+                                <?php if(intval($user['approved']) != 1): ?>
+                                    <span class="approved"> 
+                                        <img src="<?= base_url('assets/images/svg/pending.svg') ?>" alt="pending">
+                                    </span>
+                                <?php endif; ?>
+                                <span class="role">
+                                    <?php if(intval($user['role']) == 1): ?>
+                                        <h6>
+                                            ADMIN
+                                            <img src="<?= base_url('assets/images/svg/crown.svg') ?>" alt="crown">
+                                        </h6>
+                                    <?php elseif(intval($user['role']) == 2): ?>
+                                        <h6>FUNCIONÁRIO</h6>
+                                    <?php else: ?>
+                                        <h6>ALUNO</h6>
+                                    <?php endif; ?>
+                                </span>
+                                <?php if(intval($role) == 1 || (intval($role) == 2 && $user['id'] != $user_id && $is_approved && intval($user['role']) == 3)): ?>
+                                    <button class="options-btn">
+                                        <img src="<?= base_url('assets/images/svg/dots.svg') ?>" alt="dots">
+                                    </button>
+                                    <div class="options-card" style="display: none;">
+                                        <form method="POST" id="remove-user-from-activity">
+                                            <input type="hidden" name="remove-user-from-activity">
+                                            <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
+                                            <input type="hidden" name="activity_id" value="<?= $activity_id ?>">
+                                            <input type="hidden" name="current-activity-url">
+                                            <button type="button">
+                                                REMOVER DA ATIVIDADE
+                                                <img src="<?= base_url('assets/images/svg/trash.svg') ?>" alt="trash">
+                                            </button>
+                                        </form>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p class="not-found">Nenhum resultado encontrado.</p>
+                <?php endif; ?>
+            </div>
+            <?php if ($total_pages > 1): ?>
+                <div class="pagination">
+                    <p>Página: </p>
+                    <?php if ($page > 2): ?>
+                        <a
+                        href="?page=1&name=<?= urlencode($filter_name) ?>" class="next">
+                            1 ...
+                        </a>
+                    <?php endif; ?>
+                    <?php if ($page > 1): ?>
+                        <a
+                        href="?page=<?= $page - 1 ?>&name=<?= urlencode($filter_name) ?>" class="prev">
+                            <?= $page - 1 ?>
+                        </a>
+                    <?php endif; ?>
+                    <span class="current">
+                        <p><?= $page ?></p>
+                    </span>
+                    <?php if ($page < $total_pages): ?>
+                        <a
+                        href="?page=<?= $page + 1 ?>&name=<?= urlencode($filter_name) ?>" class="next">
+                            <?= $page + 1 ?>
+                        </a>
+                    <?php endif; ?>
+                    <?php if ($page < $total_pages - 1): ?>
+                        <a
+                        href="?page=<?= $total_pages ?>&name=<?= urlencode($filter_name) ?>" class="next">
+                            ... <?= $total_pages ?>
+                        </a>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
-    <?php include __DIR__ . '/../partials/modal-create-activity.php'; ?>
+    <?php include __DIR__ . '/../partials/modal-add-student-activity.php'; ?>
 </section>

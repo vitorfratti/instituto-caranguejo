@@ -9,12 +9,12 @@ $role = $user_info['role'];
 
 ?>
 
-<div class="overlay-modal-create-project overlay" style="display: none;">
-    <div class="modal-create-project">
+<div class="overlay-modal-add-student-activity overlay" style="display: none;">
+    <div class="modal-add-student-activity">
         <div class="header">
             <span>
-                <h3>Criar Projeto</h3>
-                <p>Preencha as informações para criar o projeto</p>
+                <h3>Adicionar Alunos</h3>
+                <p>Preencha as informações para adicionar os alunos na atividade</p>
             </span>
             <button class="close-btn">
                 <img
@@ -23,7 +23,7 @@ $role = $user_info['role'];
             </button>
         </div>
         <div class="main">
-            <?php include __DIR__ . '/../partials/form-create-project.php'; ?>
+            <?php include __DIR__ . '/../partials/form-add-student-activity.php'; ?>
         </div>
     </div>
 </div>

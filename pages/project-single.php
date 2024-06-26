@@ -107,7 +107,18 @@ unset($_SESSION['error']);
                             <div class="mid">
                                 <h4><?= $activity['name'] ?></h4>
                             </div>
-                            <div class="bottom"></div>
+                            <div class="bottom">
+                                <?php
+                                    $count_students = get_total_student_count_by_activity($activity['id'], null);
+                                ?>
+                                <p>
+                                    <?php if ($count_students > 0): ?>
+                                        <?= $count_students . ($count_students > 1 ? ' alunos' : ' aluno'); ?>
+                                    <?php else: ?>
+                                        Nenhum aluno
+                                    <?php endif; ?>
+                                </p>
+                            </div>
                             <a href="<?= base_url('/projeto/' . $project_slug . '/' . $activity['slug']) ?>" class="see-activity">VER ATIVIDADE</a>
                         </div>
                     <?php endforeach; ?>

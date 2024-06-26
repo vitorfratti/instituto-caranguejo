@@ -19,7 +19,7 @@ $role = $user_info['role'];
             <button class="close-btn">
                 <img
                 src="<?= base_url('assets/images/svg/close.svg') ?>"
-                alt="email">
+                alt="close">
             </button>
         </div>
         <div class="main">

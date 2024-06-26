@@ -1,5 +1,90 @@
 $(document).ready(() => {
 
+	// Confirmar remoção do aluno na atividade
+	$('#remove-user-from-activity button').click(function() {
+		if (confirm('Tem certeza que deseja remover este aluno da atividade?')) {
+			$(this).closest('form').submit()
+		}
+	})
+
+	// Url atual para redirecionamento das ações - Atividades
+	$('.activity-single input[name="current-activity-url"]').val(window.location.href)
+
+	// Selecionando usuários na atividade
+	let selectedUsers = []
+
+    function updateTextarea() {
+        $('#students-ids').val(selectedUsers.join(', '))
+    }
+
+    function addStudentCard(userId, userName) {
+        let cardHtml = `
+            <div class="card" data-student-id="${userId}">
+                ${userName}
+                <button type="button" class="remove-student">
+					<svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+						<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+						<g id="SVGRepo_iconCarrier"> <g id="Menu / Close_MD"> <path id="Vector" d="M18 18L12 12M12 12L6 6M12 12L18 6M12 12L6 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g> </g>
+					</svg>
+                </button>
+            </div>`;
+        $('#selected-students').append(cardHtml)
+    }
+
+    $('#students-input').on('input', function() {
+        let inputValue = $(this).val()
+        let option = $('#students-list option').filter(function() {
+            return $(this).val() === inputValue
+        })
+        
+        if (option.length) {
+            let userId = option.data('id')
+            let userName = option.val()
+
+            if (!selectedUsers.includes(userId)) {
+                selectedUsers.push(userId)
+                addStudentCard(userId, userName)
+                updateTextarea()
+            }
+
+            $(this).val('')
+        }
+    });
+
+    $('#selected-students').on('click', '.remove-student', function() {
+        let card = $(this).closest('.card')
+        let userId = card.data('student-id')
+
+        selectedUsers = selectedUsers.filter(id => id !== userId)
+        card.remove()
+        updateTextarea()
+    })
+
+    $('#add-student-button').on('click', function() {
+        if (selectedUsers.length === 0) {
+            $('.invalid-text').removeClass('none')
+        } else {
+            $('.invalid-text').addClass('none')
+            $('#add-student-activity').submit()
+        }
+    })
+
+	// Acões do Modal - Adionar alunos na atividade
+	$('.activity-single .add-student-activity').click(function() {
+		$('.overlay-modal-add-student-activity').show()
+	})
+
+	$('.activity-single .modal-add-student-activity .close-btn').click(function() {
+        $('.overlay-modal-add-student-activity').hide()
+    })
+
+	$('.overlay-modal-add-student-activity').click(function(event) {
+		if (event.target === this) {
+			$(this).hide()
+		}
+	})
+
 	// Confirmar remoção da atividade
 	$('#delete-activity button').click(function() {
 		if (confirm('Tem certeza que deseja remover esta atividade?')) {
