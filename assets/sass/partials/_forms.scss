@@ -85,20 +85,6 @@ form.form {
             border: none;
             box-shadow: 0 2px 1px #00000025;
             cursor: pointer;
-
-            img {
-                width: 1.5rem;
-                animation: infinite loading 1s ease;
-            }
-
-            @keyframes loading {
-                0% {
-                    transform: rotate(0);
-                }
-                100% {
-                    transform: rotate(360deg);
-                }
-            }
         }
     }
 }

@@ -1,5 +1,9 @@
 $(document).ready(() => {
 
+	$('form').submit(function(event) {
+        $('.overlay-loading').show()
+    })
+
 	// Edição de Projetos - Validação
 	$('#edit-project .submit button').click(function() {
 
@@ -596,6 +600,9 @@ $(document).ready(() => {
 		}
 
 	})
+
+	// Hide Loading
+    $('.overlay-loading').hide()
 
 	// Masks
 	$('.mask-phone').mask('(00) 0000-0000')

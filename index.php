@@ -5,6 +5,7 @@
 <?php include './partials/head.php'; ?>
 <body>
 <?php require_once './routes/routes.php'; ?>
+<?php require_once './partials/loading.php'; ?>
 <script src="<?= base_url('assets/js/script.js') ?>"></script>
 </body>
 </html>

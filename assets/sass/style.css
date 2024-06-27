@@ -329,18 +329,6 @@ form.form .submit button {
   box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1450980392);
   cursor: pointer;
 }
-form.form .submit button img {
-  width: 1.5rem;
-  animation: infinite loading 1s ease;
-}
-@keyframes loading {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 
 .modal-register {
   position: relative;
