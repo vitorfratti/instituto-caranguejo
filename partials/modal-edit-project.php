@@ -9,12 +9,12 @@ $role = $user_info['role'];
 
 ?>
 
-<div class="overlay-modal-edit-activity overlay" style="display: none;">
-    <div class="modal-edit-activity modal">
+<div class="overlay-modal-edit-project overlay" style="display: none;">
+    <div class="modal-edit-project modal">
         <div class="header">
             <span>
-                <h3>Editar Atividade</h3>
-                <p>Insira as informações para editar a atividade</p>
+                <h3>Editar Projeto</h3>
+                <p>Insira as informações para editar o projeto</p>
             </span>
             <button class="close-btn">
                 <img
@@ -23,7 +23,7 @@ $role = $user_info['role'];
             </button>
         </div>
         <div class="main">
-            <?php include __DIR__ . '/../partials/form-edit-activity.php'; ?>
+            <?php include __DIR__ . '/../partials/form-edit-project.php'; ?>
         </div>
     </div>
 </div>

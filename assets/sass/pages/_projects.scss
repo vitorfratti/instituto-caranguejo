@@ -150,7 +150,7 @@ section.projects {
                             font-weight: 400;
                         }
 
-                        button {
+                        .options-btn {
                             background: none;
                             border: none;
                             @include center-center;
@@ -197,6 +197,25 @@ section.projects {
                                             width: 1.5rem;
                                         }
                                     }
+                                }
+                            }
+
+                            .edit-project-btn {
+                                @include center-center;
+                                gap: 0.5rem;
+                                width: 100%;
+                                border: none;
+                                padding: 1.25rem;
+                                background: #fff;
+                                color: #444444;
+                                font-weight: 600;
+                                border-radius: 6px;
+                                @include center-center;
+                                cursor: pointer;
+                                transition: all .1s ease;
+
+                                img {
+                                    width: 1.5rem;
                                 }
                             }
                         }

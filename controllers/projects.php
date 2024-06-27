@@ -35,6 +35,42 @@ function create_project() {
     exit;
 }
 
+function edit_project() {
+    global $connect;
+
+    $project_name = $_POST['project-name'];
+    $project_description = $_POST['project-description'];
+    $project_link = $_POST['project-link'];
+    $project_id = $_POST['project-id'];
+
+    $query = "SELECT * FROM projects WHERE name = ? AND id != ?";
+    $stmt = $connect->prepare($query);
+    $stmt->bind_param('si', $project_name, $project_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $_SESSION['error'] = "Já existe um projeto com esse nome.";
+        header("Location: " . base_url('/projetos'));
+        exit;
+    }
+
+    $slug = create_project_slug($project_name);
+
+    $query = "UPDATE projects SET name = ?, description = ?, link = ?, slug = ? WHERE id = ?";
+    $stmt = $connect->prepare($query);
+    $stmt->bind_param('ssssi', $project_name, $project_description, $project_link, $slug, $project_id);
+    $stmt->execute();
+
+    header("Location: " . base_url('/projetos'));
+    exit;
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit-project'])) {
+    edit_project();
+    exit;
+}
+
 function create_project_slug($project_name) {
     $slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $project_name)));
     

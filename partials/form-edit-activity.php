@@ -18,9 +18,9 @@ method="POST">
             type="text"
             name="activity-name"
             placeholder="Nome da atividade"
-            value="<?= $activity['name'] ?>"
-            required>
+            value="<?= $activity['name'] ?>">
         </div>
+        <p class="invalid-text none">O nome da atividade deve ser preenchido.</p>
     </span>
     <span data-input="activity-link">
         <div class="input">
@@ -33,6 +33,6 @@ method="POST">
     </span>
     <input type="date" name="activity-date" style="display: none;">
     <div class="submit">
-        <button type="submit">EDITAR ATIVIDADE</button>
+        <button type="button">EDITAR ATIVIDADE</button>
     </div>
 </form>

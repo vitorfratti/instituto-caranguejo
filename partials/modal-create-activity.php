@@ -10,7 +10,7 @@ $role = $user_info['role'];
 ?>
 
 <div class="overlay-modal-create-activity overlay" style="display: none;">
-    <div class="modal-create-activity">
+    <div class="modal-create-activity modal">
         <div class="header">
             <span>
                 <h3>Criar Atividade</h3>

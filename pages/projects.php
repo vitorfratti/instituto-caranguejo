@@ -80,6 +80,11 @@ unset($_SESSION['error']);
                                         <img src="<?= base_url('assets/images/svg/dots.svg') ?>" alt="dots">
                                     </button>
                                     <div class="options-card" style="display: none;">
+                                        <button class="edit-project-btn" type="button">
+                                            EDITAR PROJETO
+                                            <img src="<?= base_url('assets/images/svg/edit.svg') ?>" alt="edit">
+                                        </button>
+                                        <?php include __DIR__ . '/../partials/modal-edit-project.php'; ?>
                                         <form method="POST" id="delete-project">
                                             <input type="hidden" name="delete_project_id" value="<?= $project['id'] ?>">
                                             <button type="button">

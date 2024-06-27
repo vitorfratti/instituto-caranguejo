@@ -1,5 +1,80 @@
 $(document).ready(() => {
 
+	// Edição de Projetos - Validação
+	$('#edit-project .submit button').click(function() {
+
+		// Valida nome
+		let nameValid = false;
+		if($('#edit-project span[data-input="project-name"] input').val().length >= 1) {
+			$('#edit-project span[data-input="project-name"] .invalid-text').addClass('none')
+			$('#edit-project span[data-input="project-name"] .input').removeClass('invalid-input')
+			nameValid = true;
+		} else {
+			$('#edit-project span[data-input="project-name"] .invalid-text').removeClass('none')
+			$('#edit-project span[data-input="project-name"] .input').addClass('invalid-input')
+			nameValid = false;
+		}
+
+		// Valida descrição
+		let descriptionValid = false;
+		if($('#edit-project span[data-input="project-description"] textarea').val().length >= 1) {
+			$('#edit-project span[data-input="project-description"] .invalid-text').addClass('none')
+			$('#edit-project span[data-input="project-description"] .input').removeClass('invalid-input')
+			descriptionValid = true;
+		} else {
+			$('#edit-project span[data-input="project-description"] .invalid-text').removeClass('none')
+			$('#edit-project span[data-input="project-description"] .input').addClass('invalid-input')
+			descriptionValid = false;
+		}
+
+		if(nameValid && descriptionValid) {
+			$('#edit-project .submit button').prop('type', 'submit')
+		} else {
+			$('#edit-project .submit button').prop('type', 'button')
+		}
+
+	})
+
+	// Acões do Modal - Editar Projeto
+	$('.projects .edit-project-btn').click(function() {
+		$('.overlay-modal-edit-project').show()
+	})
+
+	$('.projects .modal-edit-project .close-btn').click(function() {
+        $('.overlay-modal-edit-project').hide()
+		$('.options-card').hide()
+    })
+
+	$('.overlay-modal-edit-project').click(function(event) {
+		if (event.target === this) {
+			$(this).hide()
+			$('.options-card').hide()
+		}
+	})
+
+	// Edição de Atividades - Validação
+	$('#edit-activity .submit button').click(function() {
+
+		// Valida nome
+		let nameValid = false;
+		if($('#edit-activity span[data-input="activity-name"] input').val().length >= 1) {
+			$('#edit-activity span[data-input="activity-name"] .invalid-text').addClass('none')
+			$('#edit-activity span[data-input="activity-name"] .input').removeClass('invalid-input')
+			nameValid = true;
+		} else {
+			$('#edit-activity span[data-input="activity-name"] .invalid-text').removeClass('none')
+			$('#edit-activity span[data-input="activity-name"] .input').addClass('invalid-input')
+			nameValid = false;
+		}
+
+		if(nameValid) {
+			$('#edit-activity .submit button').prop('type', 'submit')
+		} else {
+			$('#edit-activity .submit button').prop('type', 'button')
+		}
+
+	})
+
 	// Acões do Modal - Editar Atividade
 	$('.project-single .edit-activity-btn').click(function() {
 		$('.overlay-modal-edit-activity').show()

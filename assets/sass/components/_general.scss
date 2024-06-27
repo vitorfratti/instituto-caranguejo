@@ -52,7 +52,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .invalid-text {
-    color: #ff0000;
+    color: #ff0000 !important;
     font-size: 1.25rem;
     margin-top: 0.25rem;
 }
