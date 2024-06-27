@@ -1,5 +1,18 @@
 $(document).ready(() => {
 
+	// Acões do Modal - Inserir notas da atividade
+	$('.activity-single .score-btn').click(function() {
+		$(this).closest('.score').find('.score-card').toggle()
+		$(this).find('img').toggleClass('rotate')
+	})
+
+	$(document).click(function(event) {
+		if (!$(event.target).closest('.score-card, .score-btn').length) {
+			$('.score-card').hide()
+			$('.score-btn img').removeClass('rotate')
+		}
+	})
+
 	// Confirmar remoção do aluno na atividade
 	$('#remove-user-from-activity button').click(function() {
 		if (confirm('Tem certeza que deseja remover este aluno da atividade?')) {

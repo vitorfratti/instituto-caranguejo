@@ -77,18 +77,16 @@ unset($_SESSION['error']);
                     <?php endif; ?>
                 </span>
             </div>
-            <?php if(count($users) > 0): ?>
-                <div class="filter">
-                    <form action="" method="GET" id="filter-user-form">
-                        <div class="input">
-                            <input id="filter-user-name" type="text" name="name" placeholder="Filtrar por nome" value="<?= htmlspecialchars($filter_name) ?>">
-                            <button type="submit">
-                                <img src="<?= base_url('assets/images/svg/search.svg') ?>" alt="search">
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            <?php endif; ?>
+            <div class="filter">
+                <form action="" method="GET" id="filter-user-form">
+                    <div class="input">
+                        <input id="filter-user-name" type="text" name="name" placeholder="Filtrar por nome" value="<?= htmlspecialchars($filter_name) ?>">
+                        <button type="submit">
+                            <img src="<?= base_url('assets/images/svg/search.svg') ?>" alt="search">
+                        </button>
+                    </div>
+                </form>
+            </div>
             <div class="users">
                 <?php if(count($users) > 0): ?>
                     <?php foreach($users as $user): ?>
@@ -104,7 +102,7 @@ unset($_SESSION['error']);
                                     intval($user['approved']) != 1
                                 ): ?>
                                     <span class="approved"> 
-                                        <img src="<?= base_url('assets/images/svg/pending.svg') ?>" alt="pending">
+                                        <img src="<?= base_url('assets/images/svg/pending.svg') ?>" alt="pending" title="Aprovação Pendente">
                                     </span>
                                 <?php endif; ?>
                                 <span class="role">

@@ -271,4 +271,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove-user-from-acti
     exit;
 }
 
+function set_score_activity($user_id, $activity_id, $score) {
+    global $connect;
+
+    $query = "UPDATE student_activities SET score = ? WHERE user_id = ? AND activity_id = ?";
+    $stmt = $connect->prepare($query);
+    $stmt->bind_param('iii', $score, $user_id, $activity_id);
+    $stmt->execute();
+    $stmt->close();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['set-score-activity'])) {
+    $user_id = $_POST['user_id'];
+    $activity_id = $_POST['activity_id'];
+    $score = $_POST['score'];
+    $current_activity_url = $_POST['current-activity-url'];
+
+    set_score_activity($user_id, $activity_id, $score);
+
+    header("Location: " . $current_activity_url);
+    exit;
+}
+
+function get_score_from_student($user_id, $activity_id) {
+    global $connect;
+
+    $query = "SELECT score FROM student_activities WHERE user_id = ? AND activity_id = ? LIMIT 1";
+    $stmt = $connect->prepare($query);
+    if (!$stmt) {
+        die("Erro na preparação da consulta: " . $connect->error);
+    }
+    $stmt->bind_param('ii', $user_id, $activity_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    $score = null;
+    if ($row = $result->fetch_assoc()) {
+        $score = $row['score'];
+    }
+
+    $stmt->close();
+    
+    return $score;
+}
+
 ?>

@@ -55,18 +55,16 @@ unset($_SESSION['error']);
                     <?php endif; ?>
                 </span>
             </div>
-            <?php if(count($projects) > 0): ?>
-                <div class="filter">
-                    <form action="" method="GET" id="filter-project-form">
-                        <div class="input">
-                            <input id="filter-project-name" type="text" name="name" placeholder="Filtrar por nome" value="<?= htmlspecialchars($filter_name) ?>">
-                            <button type="submit">
-                                <img src="<?= base_url('assets/images/svg/search.svg') ?>" alt="search">
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            <?php endif; ?>
+            <div class="filter">
+                <form action="" method="GET" id="filter-project-form">
+                    <div class="input">
+                        <input id="filter-project-name" type="text" name="name" placeholder="Filtrar por nome" value="<?= htmlspecialchars($filter_name) ?>">
+                        <button type="submit">
+                            <img src="<?= base_url('assets/images/svg/search.svg') ?>" alt="search">
+                        </button>
+                    </div>
+                </form>
+            </div>
             <div class="cards">
                 <?php if(count($projects) > 0): ?>
                     <?php foreach($projects as $project): ?>

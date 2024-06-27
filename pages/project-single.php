@@ -66,18 +66,16 @@ unset($_SESSION['error']);
                     <?php endif; ?>
                 </span>
             </div>
-            <?php if(count($activities) > 0): ?>
-                <div class="filter">
-                    <form action="" method="GET" id="filter-activity-form">
-                        <div class="input">
-                            <input id="filter-activity-name" type="text" name="name" placeholder="Filtrar por nome" value="<?= htmlspecialchars($filter_name) ?>">
-                            <button type="submit">
-                                <img src="<?= base_url('assets/images/svg/search.svg') ?>" alt="search">
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            <?php endif; ?>
+            <div class="filter">
+                <form action="" method="GET" id="filter-activity-form">
+                    <div class="input">
+                        <input id="filter-activity-name" type="text" name="name" placeholder="Filtrar por nome" value="<?= htmlspecialchars($filter_name) ?>">
+                        <button type="submit">
+                            <img src="<?= base_url('assets/images/svg/search.svg') ?>" alt="search">
+                        </button>
+                    </div>
+                </form>
+            </div>
             <div class="cards">
                 <?php if(count($activities) > 0): ?>
                     <?php foreach($activities as $activity): ?>
