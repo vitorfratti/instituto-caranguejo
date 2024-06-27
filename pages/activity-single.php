@@ -82,52 +82,54 @@ unset($_SESSION['error']);
                                         <img src="<?= base_url('assets/images/svg/pending.svg') ?>" alt="pending" title="Aprovação Pendente">
                                     </span>
                                 <?php endif; ?>
-                                <div class="score">
-                                    <?php $score = get_score_from_student($user['id'], $activity_id); ?>
-                                    <?php if($score != null): ?>
-                                        <button class="score-btn">
-                                            <h6>
-                                                NOTA: <strong><?= $score ?></strong>
-                                                <img src="<?= base_url('assets/images/svg/arrow-drop.svg') ?>" alt="arrow-drop">
-                                            </h6>
-                                        </button>
-                                        <div class="score-card" style="display: none;">
-                                            <form method="POST" id="update-score-activity">
-                                                <input type="hidden" name="set-score-activity">
-                                                <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
-                                                <input type="hidden" name="activity_id" value="<?= $activity_id ?>">
-                                                <input type="hidden" name="current-activity-url">
-                                                <div class="input">
-                                                    <input type="number" name="score" placeholder="Nota do aluno" value="<?= $score ?>" required>
-                                                </div>
-                                                <div class="submit">
-                                                    <button type="submit">ATUALIZAR NOTA</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    <?php else: ?>
-                                        <button class="score-btn">
-                                            <h6>
-                                                ATRIBUIR NOTA
-                                                <img src="<?= base_url('assets/images/svg/arrow-drop.svg') ?>" alt="arrow-drop">
-                                            </h6>
-                                        </button>
-                                        <div class="score-card" style="display: none;">
-                                            <form method="POST" id="set-score-activity">
-                                                <input type="hidden" name="set-score-activity">
-                                                <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
-                                                <input type="hidden" name="activity_id" value="<?= $activity_id ?>">
-                                                <input type="hidden" name="current-activity-url">
-                                                <div class="input">
-                                                    <input type="number" name="score" placeholder="Nota do aluno" required>
-                                                </div>
-                                                <div class="submit">
-                                                    <button type="submit">ENVIAR NOTA</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    <?php endif; ?>
-                                </div>
+                                <?php if(intval($role) == 1 || (intval($role) == 2 && $user['id'] != $user_id && $is_approved && intval($user['role']) == 3)): ?>
+                                    <div class="score">
+                                        <?php $score = get_score_from_student($user['id'], $activity_id); ?>
+                                        <?php if($score != null): ?>
+                                            <button class="score-btn">
+                                                <h6>
+                                                    NOTA: <strong><?= $score ?></strong>
+                                                    <img src="<?= base_url('assets/images/svg/arrow-drop.svg') ?>" alt="arrow-drop">
+                                                </h6>
+                                            </button>
+                                            <div class="score-card" style="display: none;">
+                                                <form method="POST" id="update-score-activity">
+                                                    <input type="hidden" name="set-score-activity">
+                                                    <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
+                                                    <input type="hidden" name="activity_id" value="<?= $activity_id ?>">
+                                                    <input type="hidden" name="current-activity-url">
+                                                    <div class="input">
+                                                        <input type="number" name="score" placeholder="Nota do aluno" value="<?= $score ?>" required>
+                                                    </div>
+                                                    <div class="submit">
+                                                        <button type="submit">ATUALIZAR NOTA</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        <?php else: ?>
+                                            <button class="score-btn">
+                                                <h6>
+                                                    ATRIBUIR NOTA
+                                                    <img src="<?= base_url('assets/images/svg/arrow-drop.svg') ?>" alt="arrow-drop">
+                                                </h6>
+                                            </button>
+                                            <div class="score-card" style="display: none;">
+                                                <form method="POST" id="set-score-activity">
+                                                    <input type="hidden" name="set-score-activity">
+                                                    <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
+                                                    <input type="hidden" name="activity_id" value="<?= $activity_id ?>">
+                                                    <input type="hidden" name="current-activity-url">
+                                                    <div class="input">
+                                                        <input type="number" name="score" placeholder="Nota do aluno" required>
+                                                    </div>
+                                                    <div class="submit">
+                                                        <button type="submit">ENVIAR NOTA</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endif; ?>
                                 <?php if(intval($role) == 1 || (intval($role) == 2 && $user['id'] != $user_id && $is_approved && intval($user['role']) == 3)): ?>
                                     <button class="options-btn">
                                         <img src="<?= base_url('assets/images/svg/dots.svg') ?>" alt="dots">

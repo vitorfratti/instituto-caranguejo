@@ -35,6 +35,43 @@ function create_activity() {
     exit;
 }
 
+function edit_activity() {
+    global $connect;
+
+    $activity_name = $_POST['activity-name'];
+    $activity_link = $_POST['activity-link'];
+    $activity_id = $_POST['activity-id'];
+    $current_project_url = $_POST['current-project-url'];
+
+    $query = "SELECT * FROM activities WHERE name = ? AND id != ?";
+    $stmt = $connect->prepare($query);
+    $stmt->bind_param('si', $activity_name, $activity_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $_SESSION['error'] = "Já existe uma atividade com esse nome.";
+        header("Location: " . $current_project_url);
+        exit;
+    }
+
+    $slug = create_activity_slug($activity_name);
+
+    $query = "UPDATE activities SET name = ?, link = ?, slug = ? WHERE id = ?";
+    $stmt = $connect->prepare($query);
+    $stmt->bind_param('sssi', $activity_name, $activity_link, $slug, $activity_id);
+    $stmt->execute();
+
+    header("Location: " . $current_project_url);
+    exit;
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit-activity'])) {
+    edit_activity();
+    exit;
+}
+
+
 function create_activity_slug($activity_name) {
     $slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $activity_name)));
     

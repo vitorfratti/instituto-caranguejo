@@ -1,5 +1,22 @@
 $(document).ready(() => {
 
+	// Acões do Modal - Editar Atividade
+	$('.project-single .edit-activity-btn').click(function() {
+		$('.overlay-modal-edit-activity').show()
+	})
+
+	$('.project-single .modal-edit-activity .close-btn').click(function() {
+        $('.overlay-modal-edit-activity').hide()
+		$('.options-card').hide()
+    })
+
+	$('.overlay-modal-edit-activity').click(function(event) {
+		if (event.target === this) {
+			$(this).hide()
+			$('.options-card').hide()
+		}
+	})
+
 	// Acões do Modal - Inserir notas da atividade
 	$('.activity-single .score-btn').click(function() {
 		$(this).closest('.score').find('.score-card').toggle()

@@ -550,6 +550,63 @@ form.form .submit button img {
   width: 100% !important;
 }
 
+.modal-edit-activity {
+  position: relative;
+  z-index: 5;
+  padding: 3rem;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1450980392);
+  border: 1px solid #444444;
+  background: #FFF;
+  border-radius: 6px;
+  min-width: 50rem;
+  max-width: 80rem;
+}
+.modal-edit-activity .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.modal-edit-activity .header span {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.modal-edit-activity .header h3 {
+  color: #000;
+  font-weight: 700;
+}
+.modal-edit-activity .header p {
+  color: #444444;
+  font-weight: 400;
+}
+.modal-edit-activity .header button {
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  right: 0;
+  background: none;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.modal-edit-activity .header button img {
+  width: 2.5rem;
+}
+.modal-edit-activity .main {
+  margin: 1.25rem 0 0.25rem 0;
+}
+.modal-edit-activity .main .form {
+  margin-top: 1.5rem !important;
+}
+.modal-edit-activity .main .form span, .modal-edit-activity .main .form .input, .modal-edit-activity .main .form .submit, .modal-edit-activity .main .form .submit button {
+  width: 100% !important;
+}
+
 .modal-add-student-activity {
   position: relative;
   z-index: 5;
@@ -1681,7 +1738,7 @@ section.project-single .main .content .cards .card .top p {
   color: #444444;
   font-weight: 400;
 }
-section.project-single .main .content .cards .card .top button {
+section.project-single .main .content .cards .card .top .options-btn {
   background: none;
   border: none;
   display: flex;
@@ -1690,10 +1747,10 @@ section.project-single .main .content .cards .card .top button {
   cursor: pointer;
   transition: all 0.1s ease;
 }
-section.project-single .main .content .cards .card .top button img {
+section.project-single .main .content .cards .card .top .options-btn img {
   width: 2.5rem;
 }
-section.project-single .main .content .cards .card .top button:hover {
+section.project-single .main .content .cards .card .top .options-btn:hover {
   opacity: 0.8;
 }
 section.project-single .main .content .cards .card .top .options-card {
@@ -1727,6 +1784,27 @@ section.project-single .main .content .cards .card .top .options-card form#delet
   transition: all 0.1s ease;
 }
 section.project-single .main .content .cards .card .top .options-card form#delete-activity button img {
+  width: 1.5rem;
+}
+section.project-single .main .content .cards .card .top .options-card .edit-activity-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  border: none;
+  padding: 1.25rem;
+  background: #fff;
+  color: #444444;
+  font-weight: 600;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+section.project-single .main .content .cards .card .top .options-card .edit-activity-btn img {
   width: 1.5rem;
 }
 section.project-single .main .content .cards .card .mid {

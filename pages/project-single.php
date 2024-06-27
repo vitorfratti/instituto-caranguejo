@@ -91,6 +91,11 @@ unset($_SESSION['error']);
                                         <img src="<?= base_url('assets/images/svg/dots.svg') ?>" alt="dots">
                                     </button>
                                     <div class="options-card" style="display: none;">
+                                        <button class="edit-activity-btn" type="button">
+                                            EDITAR ATIVIDADE
+                                            <img src="<?= base_url('assets/images/svg/edit.svg') ?>" alt="edit">
+                                        </button>
+                                        <?php include __DIR__ . '/../partials/modal-edit-activity.php'; ?>
                                         <form method="POST" id="delete-activity">
                                             <input type="hidden" name="delete_activity_id" value="<?= $activity['id'] ?>">
                                             <input type="hidden" name="current-project-url">
