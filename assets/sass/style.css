@@ -1986,8 +1986,8 @@ section.activity-single .main .content .students .card .right .score .score-btn 
 section.activity-single .main .content .students .card .right .score .score-card {
   position: absolute;
   z-index: 10;
-  top: 1rem;
-  left: -17rem;
+  top: 50%;
+  right: 50%;
   padding: 2rem;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.1450980392);
   border: 1px solid #444444;

@@ -77,6 +77,11 @@ unset($_SESSION['error']);
                                 </span>
                             </div>
                             <div class="right">
+                                <?php if(intval($user['approved']) != 1): ?>
+                                    <span class="approved"> 
+                                        <img src="<?= base_url('assets/images/svg/pending.svg') ?>" alt="pending" title="Aprovação Pendente">
+                                    </span>
+                                <?php endif; ?>
                                 <div class="score">
                                     <?php $score = get_score_from_student($user['id'], $activity_id); ?>
                                     <?php if($score != null): ?>
@@ -123,11 +128,6 @@ unset($_SESSION['error']);
                                         </div>
                                     <?php endif; ?>
                                 </div>
-                                <?php if(intval($user['approved']) != 1): ?>
-                                    <span class="approved"> 
-                                        <img src="<?= base_url('assets/images/svg/pending.svg') ?>" alt="pending" title="Aprovação Pendente">
-                                    </span>
-                                <?php endif; ?>
                                 <?php if(intval($role) == 1 || (intval($role) == 2 && $user['id'] != $user_id && $is_approved && intval($user['role']) == 3)): ?>
                                     <button class="options-btn">
                                         <img src="<?= base_url('assets/images/svg/dots.svg') ?>" alt="dots">
