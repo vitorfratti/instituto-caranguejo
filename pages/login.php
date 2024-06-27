@@ -50,9 +50,11 @@ unset($_SESSION['error']);
                         style="display: none;">
                     </button>
                 </div>
+                <!--
                 <div class="forgot">
                     <a href="#">Esqueceu sua senha?</a>
                 </div>
+                -->
                 <div class="submit">
                     <button type="submit">LOGIN</button>
                 </div>
